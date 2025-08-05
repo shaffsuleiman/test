@@ -1,16 +1,5 @@
 // Enhanced Demo Section Functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Import and initialize the WTA Diagram Component
-  import('./components/wta-diagram.js')
-    .then(module => {
-      // Initialize the WTA Diagram for the Night Vision section
-      const WTADiagram = module.default;
-      if (document.getElementById('night-vision-wta')) {
-        new WTADiagram('night-vision-wta');
-      }
-    })
-    .catch(error => console.error('Error loading WTA Diagram component:', error));
-    
   // Mobile Menu Toggle
   const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
   const navMenu = document.querySelector('.nav-menu');

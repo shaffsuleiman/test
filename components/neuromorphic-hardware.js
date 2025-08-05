@@ -1,6 +1,8 @@
 class NeuromorphicHardware {
     constructor(containerId) {
         this.containerId = containerId;
+        this.animationId = null;
+        this.isPlaying = true;
         this.init();
     }
 
@@ -12,6 +14,48 @@ class NeuromorphicHardware {
         }
 
         container.innerHTML = this.createHTML();
+        this.startLoopingAnimation();
+    }
+
+    startLoopingAnimation() {
+        // Start the initial animation cycle
+        this.resetAnimation();
+        
+        // Set up looping every 10 seconds (8s animation + 2s pause)
+        this.animationId = setInterval(() => {
+            if (this.isPlaying) {
+                this.resetAnimation();
+            }
+        }, 10000);
+    }
+
+    resetAnimation() {
+        const container = document.getElementById(this.containerId);
+        if (!container) return;
+
+        // Reset all animations by removing and re-adding animation classes
+        const animatedElements = container.querySelectorAll('[class*="delay-"]');
+        animatedElements.forEach(element => {
+            // Force reflow to reset animation
+            element.style.animation = 'none';
+            element.offsetHeight; // Trigger reflow
+            element.style.animation = null;
+        });
+    }
+
+    stopAnimation() {
+        this.isPlaying = false;
+        if (this.animationId) {
+            clearInterval(this.animationId);
+            this.animationId = null;
+        }
+    }
+
+    startAnimation() {
+        this.isPlaying = true;
+        if (!this.animationId) {
+            this.startLoopingAnimation();
+        }
     }
 
     createHTML() {
@@ -218,7 +262,6 @@ class NeuromorphicHardware {
                     height: 2px;
                     background-color: #888;
                     opacity: 0;
-                    animation: drawLine 1s ease-in-out forwards;
                 }
 
                 .h-line.red {
@@ -241,7 +284,6 @@ class NeuromorphicHardware {
                     width: 2px;
                     background-color: #888;
                     opacity: 0;
-                    animation: drawVertical 1s ease-in-out forwards;
                 }
 
                 .v-line.red {
@@ -283,37 +325,99 @@ class NeuromorphicHardware {
                     color: white;
                 }
 
-                /* Animation delays */
-                .delay-1 { animation-delay: 1s; }
-                .delay-2 { animation-delay: 2s; }
-                .delay-3 { animation-delay: 3s; }
-                .delay-4 { animation-delay: 4s; }
-                .delay-5 { animation-delay: 5s; }
-                .delay-6 { animation-delay: 6s; }
-                .delay-7 { animation-delay: 7s; }
+                /* Animation delays for looping */
+                .delay-1 { 
+                    animation-delay: 1s; 
+                    animation: fadeIn 0.5s ease-in-out forwards;
+                }
+                .delay-2 { 
+                    animation-delay: 2s; 
+                    animation: fadeIn 0.5s ease-in-out forwards;
+                }
+                .delay-3 { 
+                    animation-delay: 3s; 
+                    animation: drawLine 1s ease-in-out forwards;
+                }
+                .delay-4 { 
+                    animation-delay: 4s; 
+                    animation: drawLine 1s ease-in-out forwards;
+                }
+                .delay-5 { 
+                    animation-delay: 5s; 
+                    animation: drawLine 1s ease-in-out forwards;
+                }
+                .delay-6 { 
+                    animation-delay: 6s; 
+                    animation: drawVertical 1s ease-in-out forwards;
+                }
+                .delay-7 { 
+                    animation-delay: 7s; 
+                    animation: fadeIn 0.5s ease-in-out forwards;
+                }
+
+                /* Neurons get pulsing animation */
+                .neuron {
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-bottom: 15px solid #d32f2f;
+                    opacity: 0;
+                    animation: fadeInPulse 0.5s ease-in-out forwards;
+                }
+
+                .neuron.blue {
+                    border-bottom-color: #2196f3;
+                    animation: fadeInPulseBlue 0.5s ease-in-out forwards;
+                }
 
                 @keyframes fadeIn {
                     from { opacity: 0; }
                     to { opacity: 1; }
                 }
 
+                @keyframes fadeInPulse {
+                    0% { opacity: 0; transform: scale(1); }
+                    50% { opacity: 1; transform: scale(1.2); border-bottom-color: #ff5722; }
+                    100% { opacity: 1; transform: scale(1); border-bottom-color: #d32f2f; }
+                }
+
+                @keyframes fadeInPulseBlue {
+                    0% { opacity: 0; transform: scale(1); }
+                    50% { opacity: 1; transform: scale(1.2); border-bottom-color: #03a9f4; }
+                    100% { opacity: 1; transform: scale(1); border-bottom-color: #2196f3; }
+                }
+
                 @keyframes drawLine {
-                    from { 
+                    0% { 
                         opacity: 0;
                         width: 0;
+                        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
                     }
-                    to { 
+                    50% {
                         opacity: 1;
+                        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+                    }
+                    100% { 
+                        opacity: 1;
+                        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
                     }
                 }
 
                 @keyframes drawVertical {
-                    from { 
+                    0% { 
                         opacity: 0;
                         height: 0;
+                        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
                     }
-                    to { 
+                    50% {
                         opacity: 1;
+                        box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+                    }
+                    100% { 
+                        opacity: 1;
+                        box-shadow: 0 0 0 rgba(255, 255, 255, 0);
                     }
                 }
             </style>
