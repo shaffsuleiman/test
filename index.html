@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Soft WTA · Tibbling Technologies</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="animations.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="components/neuron-graph.js"></script>
+  <script src="components/wta-diagram.js"></script>
+  <script src="components/neocortical-circuit.js"></script>
+  <script src="components/neuromorphic-hardware.js"></script>
+  <script src="components/wta-directed-graph.js"></script>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="brand">
+      <img src="assets/logo-tp.png" alt="Logo" />
+      <div style="line-height:1.0; margin-bottom:0;">
+        <h1 style="margin:0;">Soft WTA</h1>
+        <p style="margin:0;">Tibbling Technologies</p>
+      </div>
+    </div>
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <nav class="nav-menu">
+      <a href="#hero" class="active">Home</a>
+      <a href="#demo">Demo</a>
+      <a href="https://www.biorxiv.org/content/10.1101/2024.10.06.616839v2.full.pdf" target="_blank">Paper</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h2>AI That Mimics Your Brain's Winner-Take-All Magic</h2>
+      <p>We cracked neocortex circuits and built AI that learns like you - with human accuracy and zero-shot superpowers.</p>
+      <a href="#demo" class="btn">→ Try the demo</a>
+    </div>
+    <video src="assets/2.mp4" class="hero-bg" alt="sWTA overview" autoplay loop muted></video>
+  </section>
+
+  <section class="section light">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; max-width: 900px; margin: 0 auto; align-items: center;">
+      <h2 style="flex: 1; min-width: 350px; margin-bottom: 20px;">When Biology Meets Silicon</h2>
+      <div style="flex: 1; min-width: 300px; margin-bottom: 20px; margin-top: 80px;">
+        <p class="subheading" style="margin-top: 0;">Your Brain, Rebuilt in Code and Circuits.</p>
+      </div>
+    </div>
+    
+    <div class="centered-figure-container">
+      <img src="assets/intro.png" alt="NeuroAI Framework Overview" class="centered-main-figure pulse-animation">
+      <p class="figure-description">
+        The complete NeuroAI framework: from biological neurons to neuromorphic chips to Vision Transformers.
+      </p>
+    </div>
+  </section>
+
+    <section class="section light">
+    <h2>Your Brain Inspires Clarity in Machines</h2>
+    <p class="subheading">Amplifies strongest signals, filters noise - exactly like your visual cortex.</p>
+    
+    <!-- Interactive Components Row -->
+    <div class="component-container" style="
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      align-items: center;
+    ">
+      <div id="neocortical-circuit-inline"></div>
+    </div>
+    
+    <img src="assets/4a.png" alt="Experimental slice data" class="inline-image float-animation">
+    <p class="caption">WTA layer enhances contrast using sliding window mechanism.</p>
+
+  </section>
+  <section class="section centered-figure-section">
+    <h2>Your Brain’s Super-Team, Now in AI</h2>
+    <p class="subheading">Silicon that thinks like biology. Each neuron has a job and together, they think.</p>
+    
+    <div class="side-by-side-showcase neuron-layout">
+      <div class="content-half">
+        <p class="intro-text">
+          Meet the brain's <strong>PV, SST, VIP, and LAMP5</strong> neurons - reverse-engineered into computational superpowers.          <strong>PV</strong> bounces, <strong>SST</strong> feeds back, <strong>VIP</strong> opens gates, <strong>LAMP5</strong> balances.
+
+        </p>
+        
+      </div>
+      
+      <div class="graph-half">
+        <div id="neuron-graph"></div>
+      </div>
+    </div>
+  </section>
+  <section class="section light centered-figure-section">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; max-width: 900px; margin: 0 auto; align-items: center;">
+      <h2 style="flex: 1; min-width: 350px; margin-bottom: 20px;">System That Thinks Like You</h2>
+      <div style="flex: 1; min-width: 300px; margin-bottom: 20px; margin-top: 50px;">
+        <p class="subheading" style="margin-top: 30px;">Chip that remembers, filters, runs on zero power just like your brain.        Cortical circuits mapped to TrueNorth's digital neurons for energy efficient computation.</p>
+      </div>
+    </div>
+
+    <div class="centered-figure-container" style="margin-top: 10px;">
+      <div id="neuromorphic-hardware-mapping" style="width: 100%; max-width: 800px; margin: 0 auto;"></div>
+    </div>
+  </section>
+
+  <section class="section centered-figure-section">
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 0 auto; align-items: center; max-width: 1200px;">
+      <!-- Figures on left side with toggle -->
+      <div style="flex: 1; min-width: 300px;">
+        <div class="toggle-container" style="display: flex; justify-content: center; margin-bottom: 15px;">
+          <div class="toggle-switch">
+            <span class="toggle-label">Architecture</span>
+            <label class="switch">
+              <input type="checkbox" id="image-toggle">
+              <span class="slider round"></span>
+            </label>
+            <span class="toggle-label">Results</span>
+          </div>
+        </div>
+        
+        <div class="toggle-image-container" style="position: relative; width: 100%; min-height: 400px;">
+          <div id="architecture-image" class="toggle-image active" style="position: absolute; width: 100%; transition: opacity 0.5s ease;">
+            <img src="assets/4cd.png" alt="sWTA Vision Transformer Architecture" style="width: 100%; max-height: 400px; object-fit: contain;" class="pulse-animation">
+          </div>
+          <div id="results-image" class="toggle-image" style="position: absolute; width: 100%; transition: opacity 0.5s ease;">
+            <img src="assets/output.png" alt="sWTA Vision Transformer Results" style="width: 100%; max-height: 500px; object-fit: contain;" class="float-animation">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Heading and subheadings on right side -->
+      <div style="flex: 1; min-width: 300px;">
+        <h2>Zero-Shot Learning Breakthrough</h2>
+        <p class="subheading">
+          Fundamental breakthrough in machine learning and adaptation. Vision Transformers got 30% smarter on unseen data. Brain-inspired beats traditional engineering.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <h2>One Brain, Any Image</h2>
+    <p class="subheading">AI that understands images across styles, formats, and distortions.</p>
+    
+    <div class="side-by-side-showcase">
+      <div class="image-comparison-grid" id="auto-transition-grid">
+        <div class="image-comparison-item">
+          <p class="image-label">MNIST</p>
+          <div class="image-overlay-container">
+            <img src="assets/b1.png" alt="Original MNIST" class="base-image">
+            <img src="assets/a1.png" alt="Processed MNIST" class="overlay-image">
+          </div>
+        </div>
+        <div class="image-comparison-item">
+          <p class="image-label">MNIST-M</p>
+          <div class="image-overlay-container">
+            <img src="assets/b2.png" alt="Original MNIST-M" class="base-image">
+            <img src="assets/a2.png" alt="Processed MNIST-M" class="overlay-image">
+          </div>
+        </div>
+        <div class="image-comparison-item">
+          <p class="image-label">USPS</p>
+          <div class="image-overlay-container">
+            <img src="assets/b3.png" alt="Original SVHN" class="base-image">
+            <img src="assets/a3.png" alt="Processed SVHN" class="overlay-image">
+          </div>
+        </div>
+        <div class="image-comparison-item">
+          <p class="image-label">SVHN</p>
+          <div class="image-overlay-container">
+            <img src="assets/b4.png" alt="Original USPS" class="base-image">
+            <img src="assets/a4.png" alt="Processed USPS" class="overlay-image">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <section class="section">
+    <h2>Night Vision Superpowers</h2>
+    <div id="night-vision-wta" style="width: 100%; max-width: 600px; margin: 20px auto;" class="animated-figure"></div>
+    <p class="caption">Just like your eyes adjust to the dark, these brain-inspired AI circuits turn up contrast in low-light scenes—helping machines 'see' where others go blind.</p>
+  </section>
+
+  <section class="section light">
+    <h2>Unsupervised Solutions for Complex Problems</h2>
+    <p>
+      One brain-layer, five AI architectures, universal improvements. Biology beats engineering across every major deep learning model.
+    </p>
+    
+   
+    
+    <p>
+      17% to 30% accuracy boosts - every architecture got smarter with one brain-inspired layer.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Target Dataset</th>
+          <th>Accuracy Gain with sWTA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ViT</td>
+          <td>MNIST-M</td>
+          <td>+30%</td>
+        </tr>
+        <tr>
+          <td>EfficientNet</td>
+          <td>SVHN</td>
+          <td>+22%</td>
+        </tr>
+        <tr>
+          <td>ResNet</td>
+          <td>MNIST-M</td>
+          <td>+19%</td>
+        </tr>
+        <tr>
+          <td>CapsuleNet</td>
+          <td>SVHN</td>
+          <td>+25%</td>
+        </tr>
+        <tr>
+          <td>MobileNet</td>
+          <td>MNIST-M</td>
+          <td>+17%</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="caption">Accuracy improvements across architectures using sWTA layer.</p>
+  </section>
+
+  <section class="section">
+    <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 0 auto; align-items: center; max-width: 1400px;">
+      <!-- Figure on left side -->
+      <div style="flex: 3; min-width: 600px; display: flex; flex-direction: column; align-items: center;">
+        <img src="assets/supp7.png" alt="Domain alignment" style="width: 100%; object-fit: contain; animation: subtle-glow 6s infinite alternate ease-in-out;" class="float-animation">
+      </div>
+      
+      <!-- Heading on right side -->
+      <div style="flex: 1; min-width: 250px;">
+        <h2>Brain-Like Feature Learning</h2>
+        <p class="caption" style="text-align: left; margin-top: 15px; margin-left: 15px;">
+          Feature alignment improves with sWTA, leading to better domain generalization.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+  <h2>Bridging Neuroscience and AI</h2>
+    <p>
+    First computationally efficient system that truly mimics brain circuits - unlocking working memory, decision-making, and biological learning.    Computer vision to medical imaging to autonomous vehicles - we're making AI <strong>fundamentally more brain-like</strong>.
+  </p>
+  <p>
+    The future: biological intelligence on silicon.
+  </p>
+  <a href="https://www.biorxiv.org/content/10.1101/2024.10.06.616839v2.full.pdf" target="_blank" class="btn dark">→ Read the full preprint</a>
+</section>
+
+
+  <section class="demo-section" id="demo">
+    <div class="demo-container">
+      <div class="demo-header">
+        <h2>Try the sWTA Demo</h2>
+        <p>Experience soft winner-take-all processing on your images</p>
+      </div>
+      
+      <div class="demo-actions">
+        <a class="demo-btn primary" href="https://huggingface.co/spaces/TibbtechUser/Winner_Take_All" target="_blank">
+          <span class="btn-icon">🚀</span>
+          Launch Interactive Demo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section" id="contact">
+  <h2 class="contact-heading">
+    Ready to Accelerate Your Drug Discovery?
+  </h2>
+  <p class="contact-subheading">
+    Get In Touch With Us
+  </p>
+  <form action="https://formspree.io/f/xvoezewb" method="POST" target="_blank" class="contact-form">
+    <input type="email" name="email" placeholder="Your email" required class="form-input" />
+    <textarea name="message" placeholder="Optional message" rows="3" class="form-textarea"></textarea>
+    <button type="submit" class="form-button">Connect</button>
+  </form>
+</section>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize the original neuron graph in the side-by-side section
+      new NeuronGraph('neuron-graph');
+      
+      // Initialize the inline components in the WTA section
+      new NeocorticalCircuit('neocortical-circuit-inline');
+      
+      // Initialize the standalone components in other sections
+      new NeuromorphicHardware('neuromorphic-hardware-mapping');
+      new WTADiagram('night-vision-wta');
+
+      // Add parallax effect to images
+      const staticImages = document.querySelectorAll('.inline-image, .centered-main-figure');
+      
+      window.addEventListener('scroll', () => {
+        let scrollPosition = window.pageYOffset;
+        
+        staticImages.forEach(img => {
+          const distance = img.getBoundingClientRect().top + scrollPosition;
+          const parallaxOffset = (scrollPosition - distance) * 0.05;
+          
+          if(img.getBoundingClientRect().top < window.innerHeight && 
+             img.getBoundingClientRect().bottom > 0) {
+            img.style.transform = `translateY(${Math.min(parallaxOffset, 15)}px)`;
+          }
+        });
+      });
+      
+      // Auto-transition for image overlays in "One Brain, Any Image" section
+      const autoTransitionGrid = document.getElementById('auto-transition-grid');
+      if (autoTransitionGrid) {
+        const overlayContainers = autoTransitionGrid.querySelectorAll('.image-overlay-container');
+        let isHovering = false;
+        
+        // Track mouse enter/leave to pause auto-transition during hover
+        overlayContainers.forEach(container => {
+          container.addEventListener('mouseenter', () => { isHovering = true; });
+          container.addEventListener('mouseleave', () => { isHovering = false; });
+        });
+        
+        // Auto transition every 3 seconds if not being hovered
+        let currentIndex = 0;
+        setInterval(() => {
+          if (!isHovering) {
+            // Remove active class from all containers
+            overlayContainers.forEach(container => {
+              container.classList.remove('active-transition');
+            });
+            
+            // Add active class to current container
+            overlayContainers[currentIndex].classList.add('active-transition');
+            
+            // Update index for next iteration
+            currentIndex = (currentIndex + 1) % overlayContainers.length;
+          }
+        }, 3000);
+      }
+      
+      // Handle toggle switch for Zero-Shot Learning section
+      const imageToggle = document.getElementById('image-toggle');
+      if (imageToggle) {
+        const architectureImage = document.getElementById('architecture-image');
+        const resultsImage = document.getElementById('results-image');
+        const architectureCaption = document.getElementById('architecture-caption');
+        const resultsCaption = document.getElementById('results-caption');
+        
+        imageToggle.addEventListener('change', function() {
+          if (this.checked) {
+            // Show results
+            architectureImage.classList.remove('active');
+            resultsImage.classList.add('active');
+            architectureCaption.style.display = 'none';
+            resultsCaption.style.display = 'inline';
+          } else {
+            // Show architecture
+            resultsImage.classList.remove('active');
+            architectureImage.classList.add('active');
+            resultsCaption.style.display = 'none';
+            architectureCaption.style.display = 'inline';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+/* Animation styles for figures */
+@keyframes subtle-glow {
+  0% {
+    filter: drop-shadow(0 0 2px rgba(26, 115, 232, 0.2));
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 5px rgba(26, 115, 232, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 8px rgba(26, 115, 232, 0.3));
+    transform: translateY(-5px) scale(1.01);
+  }
+}
+
+.animated-figure {
+  transition: all 0.5s ease;
+}
+
+.animated-figure:hover {
+  filter: drop-shadow(0 0 10px rgba(26, 115, 232, 0.6));
+  transform: scale(1.02);
+}
+
+/* Simple pulse animation for other images */
+@keyframes subtle-pulse {
+  0% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.01);
+    filter: brightness(1.05);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+.pulse-animation {
+  animation: subtle-pulse 4s infinite ease-in-out;
+}
+
+/* Slow float animation */
+@keyframes float-animation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.float-animation {
+  animation: float-animation 8s infinite ease-in-out;
+}
+
+/* Auto-transition for image overlays */
+/* These styles modify the hover behavior to work with JavaScript auto-transition */
+.image-overlay-container.active-transition .overlay-image {
+  opacity: 1 !important;
+}
+
+.image-overlay-container.active-transition .base-image {
+  opacity: 0 !important;
+}
+
+/* Toggle switch styles */
+.toggle-container {
+  margin: 15px 0;
+}
+
+.toggle-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.toggle-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(30px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Toggle image container */
+.toggle-image {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+}
+
+.toggle-image.active {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Neuron Graph</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .graph-container {
+            width: 100%;
+            max-width: 800px;
+            height: 500px;
+            background-color: #090E14;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .graph-title {
+            color: #DADCE0;
+            font-family: 'Oxanium', monospace;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        #neuronChart {
+            background-color: transparent;
+        }
+        
+        .legend-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #DADCE0;
+            font-family: 'Oxanium', monospace;
+            font-size: 12px;
+        }
+        
+        .legend-line {
+            width: 20px;
+            height: 3px;
+            border-radius: 2px;
+        }
+        
+        .pv-line { background-color: #FF6B35; }
+        .sst-line { background-color: #0F7BCE; }
+        .vip-line { background-color: #10B981; }
+        .lamp5-line { background-color: #8B5CF6; }
+    </style>
+</head>
+<body>
+    <div class="graph-container">
+        <div class="graph-title"></div>
+        <canvas id="neuronChart"></canvas>
+        <div class="legend-container">
+            <div class="legend-item">
+                <div class="legend-line pv-line"></div>
+                <span>PV (Bouncer)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line sst-line"></div>
+                <span>SST (Feedback)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line vip-line"></div>
+                <span>VIP (Gate Opener)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line lamp5-line"></div>
+                <span>LAMP5 (Balancer)</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('neuronChart').getContext('2d');
+        
+        // Original data points for the four neuron types
+        const originalData = [
+            { neuronId: 1, pv: 5, sst: 8, vip: 12, lamp5: 15 },
+            { neuronId: 2, pv: 12, sst: 18, vip: 25, lamp5: 30 },
+            { neuronId: 3, pv: 25, sst: 35, vip: 40, lamp5: 45 },
+            { neuronId: 4, pv: 40, sst: 50, vip: 55, lamp5: 60 },
+            { neuronId: 5, pv: 35, sst: 45, vip: 50, lamp5: 55 },
+            { neuronId: 6, pv: 20, sst: 28, vip: 35, lamp5: 40 },
+            { neuronId: 7, pv: 8, sst: 15, vip: 20, lamp5: 25 }
+        ];
+
+        let animationProgress = 0;
+        let chart;
+
+        // Initialize chart
+        const initChart = () => {
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: [1, 2, 3, 4, 5, 6, 7],
+                    datasets: [
+                        {
+                            label: 'PV (Bouncer)',
+                            data: [],
+                            borderColor: '#FF6B35',
+                            backgroundColor: 'transparent',
+                            borderWidth: 3,
+                            pointRadius: 0,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'SST (Feedback)',
+                            data: [],
+                            borderColor: '#0F7BCE',
+                            backgroundColor: 'transparent',
+                            borderWidth: 3,
+                            pointRadius: 0,
+                            tension: 0.4,
+                            borderDash: [5, 5]
+                        },
+                        {
+                            label: 'VIP (Gate Opener)',
+                            data: [],
+                            borderColor: '#10B981',
+                            backgroundColor: 'transparent',
+                            borderWidth: 3,
+                            pointRadius: 0,
+                            tension: 0.4,
+                            borderDash: [10, 5]
+                        },
+                        {
+                            label: 'LAMP5 (Balancer)',
+                            data: [],
+                            borderColor: '#8B5CF6',
+                            backgroundColor: 'transparent',
+                            borderWidth: 3,
+                            pointRadius: 0,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Cortical Layer',
+                                color: '#DADCE0',
+                                font: {
+                                    family: 'Oxanium',
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                color: '#DADCE0',
+                                font: {
+                                    family: 'Oxanium',
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: '#2A3441'
+                            },
+                            border: {
+                                color: '#DADCE0'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Inhibitory Strength (Hz)',
+                                color: '#DADCE0',
+                                font: {
+                                    family: 'Oxanium',
+                                    size: 14,
+                                    weight: 'bold'
+                                }
+                            },
+                            ticks: {
+                                color: '#DADCE0',
+                                font: {
+                                    family: 'Oxanium',
+                                    size: 12,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: '#2A3441'
+                            },
+                            border: {
+                                color: '#DADCE0'
+                            },
+                            min: 0,
+                            max: 65
+                        }
+                    },
+                    animation: false
+                }
+            });
+        };
+
+        // Update chart data based on animation progress
+        const updateChart = (progress) => {
+            const animatedData = originalData.map(point => ({
+                pv: point.pv * progress,
+                sst: point.sst * progress,
+                vip: point.vip * progress,
+                lamp5: point.lamp5 * progress
+            }));
+
+            chart.data.datasets[0].data = animatedData.map(d => d.pv);
+            chart.data.datasets[1].data = animatedData.map(d => d.sst);
+            chart.data.datasets[2].data = animatedData.map(d => d.vip);
+            chart.data.datasets[3].data = animatedData.map(d => d.lamp5);
+            
+            chart.update('none');
+        };
+
+        // Animation loop
+        const animate = () => {
+            animationProgress += 0.015;
+            
+            if (animationProgress >= 1) {
+                animationProgress = 1;
+                updateChart(animationProgress);
+                setTimeout(() => {
+                    animationProgress = 0;
+                    requestAnimationFrame(animate);
+                }, 2000);
+            } else {
+                updateChart(animationProgress);
+                requestAnimationFrame(animate);
+            }
+        };
+
+        // Initialize
+        initChart();
+        animate();
+    </script>
+</body>
+</html>

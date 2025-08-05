@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated WTA Diagram</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0F1923;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .wta-diagram-container {
+            width: 100%;
+            max-width: 900px;
+            background-color: #0F1923;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .diagram-title {
+            color: #DADCE0;
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .diagram-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .diagram-controls button {
+            padding: 8px 16px;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Arial', sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .diagram-controls button:first-child {
+            background-color: #0F7BCE;
+        }
+        
+        .diagram-controls button:last-child {
+            background-color: #666;
+        }
+        
+        .diagram-controls button:hover {
+            opacity: 0.8;
+        }
+        
+        #wtaSvg {
+            width: 100%;
+            height: 450px;
+            background-color: transparent;
+        }
+        
+        .diagram-legend {
+            margin-top: 15px;
+            color: #DADCE0;
+            font-family: 'Arial', sans-serif;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+        
+        .diagram-legend p {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .diagram-legend ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .diagram-legend li {
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wta-container"></div>
+
+    <script src="wta-diagram.js"></script>
+    <script>
+        // Initialize the WTA diagram when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            new WTADiagram('wta-container');
+        });
+    </script>
+</body>
+</html>
