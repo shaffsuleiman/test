@@ -100,16 +100,16 @@
       </div>
     </div>
   </section>
-  <section class="section light centered-figure-section">
-    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; max-width: 900px; margin: 0 auto; align-items: center;">
-      <h2 style="flex: 1; min-width: 350px; margin-bottom: 20px;">System That Thinks Like You</h2>
-      <div style="flex: 1; min-width: 300px; margin-bottom: 20px; margin-top: 50px;">
-        <p class="subheading" style="margin-top: 30px;">Chip that remembers, filters, runs on zero power just like your brain.        Cortical circuits mapped to TrueNorth's digital neurons for energy efficient computation.</p>
+  <section class="section light">
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; max-width: 900px; margin: 0 auto; align-items: flex-start;">
+      <h2 style="flex: 1; min-width: 350px; margin-bottom: 10px;">System That Thinks Like You</h2>
+      <div style="flex: 1; min-width: 300px; margin-bottom: 10px;">
+        <p class="subheading" style="margin-top: 30px;">Chip that remembers, filters, runs on zero power just like your brain. Cortical circuits mapped to TrueNorth's digital neurons for energy efficient computation.</p>
       </div>
     </div>
 
-    <div class="centered-figure-container" style="margin-top: 10px;">
-      <div id="neuromorphic-hardware-mapping" style="width: 100%; max-width: 800px; margin: 0 auto;"></div>
+    <div class="centered-figure-container" style="margin-top: 0; max-height: 450px; overflow: hidden;">
+      <div id="neuromorphic-hardware-mapping" style="width: 100%; max-width: 800px; margin: 0 auto; transform: scale(0.85); transform-origin: top center;"></div>
     </div>
   </section>
 
@@ -119,12 +119,12 @@
       <div style="flex: 1; min-width: 300px;">
         <div class="toggle-container" style="display: flex; justify-content: center; margin-bottom: 15px;">
           <div class="toggle-switch">
-            <span class="toggle-label">Architecture</span>
+            <span class="toggle-label" style="color: white;">Architecture</span>
             <label class="switch">
               <input type="checkbox" id="image-toggle">
               <span class="slider round"></span>
             </label>
-            <span class="toggle-label">Results</span>
+            <span class="toggle-label" style="color: white;">Results</span>
           </div>
         </div>
         
@@ -329,11 +329,12 @@
         });
       });
       
-      // Auto-transition for image overlays in "One Brain, Any Image" section
+      // Auto-transition for image overlays in "Any Image, One Solution" section
       const autoTransitionGrid = document.getElementById('auto-transition-grid');
       if (autoTransitionGrid) {
         const overlayContainers = autoTransitionGrid.querySelectorAll('.image-overlay-container');
         let isHovering = false;
+        let isShowingOverlay = false;
         
         // Track mouse enter/leave to pause auto-transition during hover
         overlayContainers.forEach(container => {
@@ -341,20 +342,19 @@
           container.addEventListener('mouseleave', () => { isHovering = false; });
         });
         
-        // Auto transition every 3 seconds if not being hovered
-        let currentIndex = 0;
+        // Auto transition all images together every 3 seconds if not being hovered
         setInterval(() => {
           if (!isHovering) {
-            // Remove active class from all containers
+            isShowingOverlay = !isShowingOverlay;
+            
+            // Toggle active-transition class on all containers at once
             overlayContainers.forEach(container => {
-              container.classList.remove('active-transition');
+              if (isShowingOverlay) {
+                container.classList.add('active-transition');
+              } else {
+                container.classList.remove('active-transition');
+              }
             });
-            
-            // Add active class to current container
-            overlayContainers[currentIndex].classList.add('active-transition');
-            
-            // Update index for next iteration
-            currentIndex = (currentIndex + 1) % overlayContainers.length;
           }
         }, 3000);
       }
