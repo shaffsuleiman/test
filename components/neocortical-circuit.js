@@ -408,87 +408,119 @@ class NeocorticalCircuit {
     }
 
     updateAnimation() {
-        // Calculate animation values
-        const nodeGlow = 0.5 + 0.5 * Math.sin(this.animationPhase);
-        const connectionPulse = 0.3 + 0.4 * Math.sin(this.signalFlow);
-        const inhibitionStrength = 0.4 + 0.3 * Math.sin(this.animationPhase * 1.3);
+        // Calculate data flow progression (0 to 1)
+        const flowProgress = (Math.sin(this.animationPhase) + 1) / 2; // Normalized sine wave 0-1
         
-        // Update neuron glow effects
-        const neurons = ['lamp5-neuron', 'neuron-1', 'neuron-10', 'left-cluster', 'right-cluster'];
-        neurons.forEach((id, index) => {
-            const element = document.getElementById(id);
-            if (element) {
-                const threshold = 0.5 + index * 0.1;
-                const scale = 1 + nodeGlow * (0.1 + index * 0.02);
-                element.style.transform = `scale(${scale})`;
-                element.style.transformOrigin = `${element.getAttribute('cx')}px ${element.getAttribute('cy')}px`;
-                
-                if (nodeGlow > threshold) {
-                    element.setAttribute('filter', 'url(#neocorticalGlow)');
-                } else {
-                    element.removeAttribute('filter');
-                }
-            }
-        });
+        // Define flow stages
+        const stage1 = flowProgress < 0.2; // Input stage
+        const stage2 = flowProgress >= 0.2 && flowProgress < 0.5; // Processing stage
+        const stage3 = flowProgress >= 0.5 && flowProgress < 0.8; // Output stage
+        const stage4 = flowProgress >= 0.8; // Reset/feedback stage
         
-        // Update VIP and PV pulsing
-        const pulsingNeurons = ['vip-neuron', 'pv-1', 'pv-10'];
-        pulsingNeurons.forEach((id, index) => {
-            const element = document.getElementById(id);
-            if (element) {
-                const pulseScale = 1 + Math.sin(this.animationPhase * 1.5 + index * 0.5) * 0.15;
-                element.style.transform = `scale(${pulseScale})`;
-                element.style.transformOrigin = `${element.getAttribute('cx')}px ${element.getAttribute('cy')}px`;
-            }
-        });
+        // Reset all elements to base state
+        this.resetAllElements();
         
-        // Update SST with brightness and scaling
-        const sstElement = document.getElementById('sst-neuron');
-        if (sstElement) {
-            const brightness = 1 + inhibitionStrength * 0.3;
-            const sstScale = 1 + inhibitionStrength * 0.15;
-            sstElement.style.filter = `brightness(${brightness})`;
-            sstElement.style.transform = `scale(${sstScale})`;
-            sstElement.style.transformOrigin = `${sstElement.getAttribute('cx')}px ${sstElement.getAttribute('cy')}px`;
+        // Stage 1: Input activation
+        if (stage1) {
+            this.activateElement('lamp5-neuron', 1.0);
+            this.activateConnection('contextual-arrow', 0.8);
         }
         
-        // Update connection opacities
-        const connectionIds = [
+        // Stage 2: Processing through PV and VIP
+        if (stage2) {
+            this.activateElement('pv-1', 0.9);
+            this.activateElement('pv-10', 0.9);
+            this.activateElement('vip-neuron', 0.8);
+            this.activateConnection('lamp5-left', 0.7);
+            this.activateConnection('lamp5-right', 0.7);
+            this.activateConnection('vip-lamp5-1', 0.6);
+            this.activateConnection('vip-lamp5-2', 0.6);
+        }
+        
+        // Stage 3: Main neuron processing and SST inhibition
+        if (stage3) {
+            this.activateElement('left-cluster', 0.8);
+            this.activateElement('right-cluster', 0.8);
+            this.activateElement('neuron-1', 0.9);
+            this.activateElement('neuron-10', 0.9);
+            this.activateElement('sst-neuron', 0.7);
+            this.activateConnection('pv1-conn', 0.8);
+            this.activateConnection('pv10-conn', 0.8);
+            this.activateConnection('sst1-conn', 0.6);
+            this.activateConnection('sst10-conn', 0.6);
+        }
+        
+        // Stage 4: Output and feedback
+        if (stage4) {
+            this.activateConnection('recurrent-conn', 0.7);
+            this.activateConnection('input1-conn', 0.8);
+            this.activateConnection('input10-conn', 0.8);
+        }
+    }
+    
+    resetAllElements() {
+        // Reset all neurons to base state
+        const allNeurons = ['lamp5-neuron', 'neuron-1', 'neuron-10', 'left-cluster', 'right-cluster', 'vip-neuron', 'pv-1', 'pv-10', 'sst-neuron'];
+        allNeurons.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.style.transform = 'scale(1)';
+                element.removeAttribute('filter');
+                element.style.filter = 'brightness(1)';
+            }
+        });
+        
+        // Reset all connections to low opacity
+        const allConnections = [
             'contextual-arrow', 'lamp5-left', 'lamp5-right', 'vip-lamp5-1', 'vip-lamp5-2',
-            'recurrent-conn', 'pv1-conn', 'pv10-conn', 'input1-conn', 'input10-conn'
+            'recurrent-conn', 'pv1-conn', 'pv10-conn', 'input1-conn', 'input10-conn',
+            'sst1-conn', 'sst10-conn'
         ];
         
-        connectionIds.forEach(id => {
+        allConnections.forEach(id => {
             const element = document.getElementById(id);
             if (element) {
-                element.setAttribute('opacity', connectionPulse);
-                if (id.includes('lamp5') || id.includes('sst')) {
-                    element.setAttribute('filter', 'url(#connectionGlow2)');
-                }
+                element.setAttribute('opacity', '0.2');
+                element.removeAttribute('filter');
             }
         });
-        
-        // Update SST connections with inhibition strength
-        ['sst1-conn', 'sst10-conn'].forEach(id => {
-            const element = document.getElementById(id);
-            if (element) {
-                element.setAttribute('opacity', inhibitionStrength);
+    }
+    
+    activateElement(id, intensity) {
+        const element = document.getElementById(id);
+        if (element) {
+            const scale = 1 + intensity * 0.2;
+            element.style.transform = `scale(${scale})`;
+            element.style.transformOrigin = `${element.getAttribute('cx')}px ${element.getAttribute('cy')}px`;
+            
+            if (intensity > 0.5) {
+                element.setAttribute('filter', 'url(#neocorticalGlow)');
+            }
+            
+            if (id === 'sst-neuron') {
+                const brightness = 1 + intensity * 0.4;
+                element.style.filter = `brightness(${brightness})`;
+            }
+        }
+    }
+    
+    activateConnection(id, intensity) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.setAttribute('opacity', intensity);
+            if (intensity > 0.6) {
                 element.setAttribute('filter', 'url(#connectionGlow2)');
             }
-        });
+        }
     }
 
     startAnimation() {
         const animate = () => {
             if (this.isPlaying) {
-                this.animationPhase += 0.1;
-                this.signalFlow += 0.08;
+                this.animationPhase += 0.02; // Slower animation for clearer data flow
                 
                 if (this.animationPhase > Math.PI * 2) {
                     this.animationPhase = 0;
-                }
-                if (this.signalFlow > Math.PI * 2) {
-                    this.signalFlow = 0;
                 }
                 
                 this.updateAnimation();
