@@ -3,8 +3,8 @@
 body {
   margin: 0;
   font-family: 'Oxanium', monospace;
-  background-color: #090E14; /* deepmind-dark */
-  color: #DADCE0; /* deepmind-gray-300 */
+  background-color: #fff;
+  color: #222;
 }
 
 a {
@@ -13,16 +13,16 @@ a {
 }
 
 header.navbar {
-  background: #0F1923; /* deepmind-blue */
+  background: #fff;
   display: flex;
   justify-content: space-between;
   padding: 12px 20px;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 1000;
-  color: #FFFFFF;
+  color: #222;
 }
 
 /* Mobile Menu Toggle Button */
@@ -66,7 +66,7 @@ header.navbar {
 
 .nav-menu a {
   margin: 0 10px;
-  color: white;
+  color: #222;
   font-weight: 500;
   transition: all 0.3s ease;
   padding: 8px 16px;
@@ -77,11 +77,11 @@ header.navbar {
 }
 
 .nav-menu a:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: #f0f4f8;
 }
 
 .nav-menu a.active {
-  background: rgba(255, 255, 255, 0.2);
+  background: #e3eaf3;
 }
 
 /* Mobile navbar improvements */
@@ -179,12 +179,12 @@ header.navbar {
 }
 
 .neuron-list li strong, .neurochip-list li code {
-  color: #0F1923;
+  color: #222;
   font-weight: 600;
 }
 
 .neuron-list li em {
-  color: #DADCE0;
+  color: #222;
   font-style: italic;
 }
 
@@ -194,7 +194,7 @@ header.navbar {
   border-radius: 4px;
   font-family: 'Courier New', monospace;
   font-size: 0.9rem;
-  color: #ffffff;
+  color: #222;
 }
 
 /* Content with Figure Side-by-Side Layout - Reverse */
@@ -324,8 +324,8 @@ body.menu-open {
   display: flex;
   align-items: center;
   padding-left: 50px;
-  background: #000000;
-  color: white;
+  background: #fff;
+  color: #222;
   overflow: hidden;
 }
 
@@ -338,11 +338,11 @@ body.menu-open {
   font-size: 2.75rem;
   font-weight: 700;
   margin: 20px 0;
-  color: white;
+  color: #222;
 }
 
 .hero p {
-  color: rgba(255, 255, 255, 0.9);
+  color: #222;
   line-height: 1.6;
 }
 
@@ -388,7 +388,7 @@ body.menu-open {
 
 .hero .btn {
   background: #0F1923;
-  color: white;
+  color: #222;
   padding: 12px 24px;
   border-radius: 25px;
   display: inline-block;
@@ -405,20 +405,20 @@ body.menu-open {
   top: 0; left: 0;
   width: 100%; height: 100%;
   object-fit: cover;
-  opacity: 0.5;
+  opacity: 0.8;
   z-index: 1;
 }
 
 .section {
   padding: 60px 100px;
-  background-color: #090E14; /* deepmind-darker */
-  color: #E8EAED; /* deepmind-gray-200 */
+  background-color: #fff;
+  color: #222;
   text-align: center;
 }
 
 .section.light {
-  background: #0F1923;
-  color: #E8EAED;
+  background: #fff;
+  color: #222;
   text-align: center;
 }
 
@@ -438,7 +438,7 @@ body.menu-open {
 .section .subheading {
   font-size: 0.9rem;
   font-weight: 400;
-  color: #DADCE0;
+  color: #252526;
   margin: -18px 0 40px 0;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -519,8 +519,8 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 }
 
 .btn {
-  background: #0F1923;
-  color: white;
+  background: #1557b8;
+  color: #fff;
   padding: 12px 24px;
   display: inline-block;
   border-radius: 25px;
@@ -529,7 +529,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 }
 
 .btn:hover {
-  background: #1557b8;
+  background: #0F1923;
 }
 
 .btn.dark {
@@ -561,7 +561,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 }
 
 .caption {
-  color: #9AA0A6; /* deepmind-gray-500 */
+  color: #393b3d; /* deepmind-gray-500 */
   font-style: italic;
   font-size: 0.9em;
   margin-top: 10px;
@@ -578,7 +578,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 .demo-section {
   background: linear-gradient(135deg, #0F1923 0%, #1a2332 50%, #0F1923 100%);
   padding: 80px 20px;
-  color: #FFFFFF;
+  color: #222;
   position: relative;
   overflow: hidden;
 }
@@ -610,7 +610,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, #ffffff 0%, #a8b5ff 100%);
+  background: black;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -771,7 +771,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 
 .demo-btn.primary {
   background: linear-gradient(135deg, #0F1923 0%, #1a2332 100%);
-  color: white;
+  color: #222;
   border: 2px solid #0F1923;
 }
 
@@ -783,7 +783,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 
 .demo-btn.secondary {
   background: rgba(255, 255, 255, 0.1);
-  color: white;
+  color: #222;
   border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -796,6 +796,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 
 .btn-icon {
   font-size: 1.2rem;
+  color: white ;
 }
 
 .demo-info {
@@ -817,12 +818,12 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #FFFFFF;
+  color: #222;
 }
 
 .info-item p {
   font-size: 0.95rem;
-  color: #DADCE0;
+  color: #222;
   margin: 0;
 }
 
@@ -1335,7 +1336,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 16px;
-  color: #FFFFFF;
+  color: #222;
 }
 
 .side-by-side-showcase p {
@@ -1392,10 +1393,10 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: space-between;
-  gap: 30px;
+  justify-content: center;
+  gap: 15px;
   margin: 40px auto;
-  max-width: 1400px;
+  max-width: 800px;
   overflow-x: auto;
   padding: 15px 30px;
 }
@@ -1411,7 +1412,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
   .image-comparison-grid {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 40px;
+    gap: 12px;
   }
 }
 
@@ -1420,26 +1421,31 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
   flex-direction: column;
   align-items: center;
   flex: 0 0 auto;
-  width: 20%;
-  min-width: 240px;
+  width: 15%;
+  min-width: 120px;
+  max-width: 150px;
 }
 
 @media (max-width: 992px) {
   .image-comparison-item {
-    width: 45%;
+    width: 35%;
+    min-width: 100px;
+    max-width: 140px;
   }
 }
 
 @media (max-width: 576px) {
   .image-comparison-item {
-    width: 100%;
+    width: 70%;
+    min-width: 90px;
+    max-width: 120px;
   }
 }
 
 .image-label {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   color: #E0E6ED;
 }
 
@@ -1459,7 +1465,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .overlay-image {
@@ -1508,7 +1514,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 .set-title {
   font-size: 1.4rem;
   font-weight: 500;
-  color: #FFFFFF;
+  color: #222;
   margin-bottom: 30px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -1739,7 +1745,7 @@ section img:not(.base-image):not(.overlay-image):not(.logo) {
 .image-label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #222;
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -1940,7 +1946,7 @@ table tr:hover {
 
 .contact-section {
   padding: 60px 20px;
-  background-color: #0F1923; /* deepmind-dark */
+  background-color: #ffffff; /* deepmind-dark */
   color: #ffffff;
   text-align: center;
   font-family: 'Oxanium', monospace;
@@ -1951,11 +1957,11 @@ table tr:hover {
   font-weight: bold;
   margin-bottom: 1.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(26, 115, 232, 0.3); /* deepmind-blue/30 */
+  border-bottom: 1px solid rgba(105, 106, 107, 0.015); /* deepmind-blue/30 */
 }
 
 .contact-subheading {
-  color: #DADCE0; /* deepmind-gray-300 */
+  color: #2b2b2d; /* deepmind-gray-300 */
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -1973,7 +1979,7 @@ table tr:hover {
   width: 92%;
   padding: 12px 16px;
   border-radius: 8px;
-  background-color: #090E14; /* deepmind-darker */
+  background-color: #acadaf; /* deepmind-darker */
   color: white;
   border: 1px solid #80868B; /* deepmind-gray-600 */
   font-size: 1rem;
@@ -1983,13 +1989,13 @@ table tr:hover {
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: #9AA0A6; /* deepmind-gray-500 */
+  color: #222;
 }
 
 .form-button {
   width: 92%;
   padding: 12px 24px;
-  background-color: #1A73E8; /* deepmind-blue */
+  background-color: #161617; /* deepmind-blue */
   color: white;
   font-weight: 600;
   border: none;

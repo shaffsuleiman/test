@@ -7,6 +7,8 @@ class WTADiagram {
         this.pulseIntensity = 0;
         this.animationId = null;
         this.isPlaying = true;
+        this.dataParticles = [];
+        this.flowPaths = [];
 
         this.init();
     }
@@ -14,6 +16,8 @@ class WTADiagram {
     init() {
         this.createHTML();
         this.setupSVG();
+        this.createFlowPaths();
+        this.initializeDataParticles();
         this.startAnimation();
     }
 
@@ -23,7 +27,7 @@ class WTADiagram {
         container.innerHTML = `
             <div class="wta-diagram-container" style="
                 width: 100%;
-                background-color: #090E14;
+                background-color: #ffffff;
                 padding: 15px;
                 border-radius: 8px;
                 margin: 0 auto;
@@ -81,7 +85,7 @@ class WTADiagram {
         const statePool = this.createSVGElement('rect', {
             x: '50', y: '50', width: '500', height: '120',
             rx: '60', ry: '60', fill: 'none',
-            stroke: '#2A3441', 'stroke-width': '2'
+            stroke: '#000000', 'stroke-width': '2'
         });
         this.svg.appendChild(statePool);
         
@@ -89,7 +93,7 @@ class WTADiagram {
         const pointerPool = this.createSVGElement('rect', {
             x: '50', y: '220', width: '500', height: '120',
             rx: '60', ry: '60', fill: 'none',
-            stroke: '#2A3441', 'stroke-width': '2'
+            stroke: '#000000', 'stroke-width': '2'
         });
         this.svg.appendChild(pointerPool);
         
@@ -99,11 +103,46 @@ class WTADiagram {
         // Create nodes
         this.createNodes();
         
+        // Create input sources at top
+        this.createInputSources();
+        
         // Create labels
         this.createLabels();
         
         // Create legend
         this.createLegend();
+    }
+
+    createInputSources() {
+        // Input source indicators at top of diagram
+        const input1 = this.createSVGElement('rect', {
+            x: '130', y: '20', width: '40', height: '20',
+            rx: '5', ry: '5', fill: '#4CAF50',
+            opacity: '0.8', id: 'input1-source'
+        });
+        this.svg.appendChild(input1);
+        
+        const input2 = this.createSVGElement('rect', {
+            x: '230', y: '20', width: '40', height: '20',
+            rx: '5', ry: '5', fill: '#2196F3',
+            opacity: '0.8', id: 'input2-source'
+        });
+        this.svg.appendChild(input2);
+        
+        // Input arrows
+        const arrow1 = this.createSVGElement('path', {
+            d: 'M150,40 L150,60 M145,55 L150,60 L155,55',
+            stroke: '#4CAF50', 'stroke-width': '2',
+            fill: 'none', id: 'input1-arrow'
+        });
+        this.svg.appendChild(arrow1);
+        
+        const arrow2 = this.createSVGElement('path', {
+            d: 'M250,40 L250,60 M245,55 L250,60 L255,55',
+            stroke: '#2196F3', 'stroke-width': '2',
+            fill: 'none', id: 'input2-arrow'
+        });
+        this.svg.appendChild(arrow2);
     }
 
     createSVGElement(type, attributes) {
@@ -134,9 +173,9 @@ class WTADiagram {
         
         // Horizontal connections
         const hConnections = [
-            {x1: '350', y1: '100', x2: '450', y2: '100', id: 'hconn1'},
-            {x1: '350', y1: '130', x2: '450', y2: '130', id: 'hconn2'},
-            {x1: '350', y1: '270', x2: '450', y2: '270', id: 'hconn3'},
+            {x1: '280', y1: '100', x2: '450', y2: '100', id: 'hconn1'},
+            {x1: '280', y1: '130', x2: '450', y2: '130', id: 'hconn2'},
+            {x1: '280', y1: '270', x2: '450', y2: '270', id: 'hconn3'},
         ];
         
         hConnections.forEach(conn => {
@@ -236,22 +275,27 @@ class WTADiagram {
 
     createLabels() {
         const labels = [
-            {x: '90', y: '110', text: 'S1', fill: '#4CAF50', id: 's1-label'},
-            {x: '290', y: '110', text: 'S2', fill: '#2196F3', id: 's2-label'},
-            {x: '120', y: '300', text: 'P12', fill: '#DADCE0', id: 'p12-label'},
-            {x: '220', y: '300', text: 'P21', fill: '#DADCE0', id: 'p21-label'},
-            {x: '80', y: '320', text: 'Input-X', fill: '#DADCE0', id: 'inputx-label'},
-            {x: '215', y: '320', text: 'Input-Y', fill: '#DADCE0', id: 'inputy-label'},
-            {x: '350', y: '40', text: 'state WTA pool', fill: '#DADCE0', id: 'state-label'},
-            {x: '340', y: '210', text: 'pointer WTA pool', fill: '#DADCE0', id: 'pointer-label'},
-            {x: '180', y: '150', text: 'γ', fill: '#FF6B35', id: 'gamma-label'},
-            {x: '200', y: '200', text: 'φ', fill: '#FF6B35', id: 'phi-label'}
+            // Input labels at top
+            // {x: '135', y: '35', text: 'Input 1', fill: '#4CAF50', id: 'input1-label', size: '12'},
+            // {x: '235', y: '35', text: 'Input 2', fill: '#2196F3', id: 'input2-label', size: '12'},
+            
+            // Pool labels
+            {x: '90', y: '110', text: 'S1', fill: '#4CAF50', id: 's1-label', size: '14'},
+            {x: '290', y: '110', text: 'S2', fill: '#2196F3', id: 's2-label', size: '14'},
+            {x: '120', y: '300', text: 'P12', fill: '#000000', id: 'p12-label', size: '14'},
+            {x: '220', y: '300', text: 'P21', fill: '#000000', id: 'p21-label', size: '14'},
+            
+            // Section labels
+            {x: '350', y: '40', text: 'state WTA pool', fill: '#000000', id: 'state-label', size: '14'},
+            {x: '340', y: '210', text: 'pointer WTA pool', fill: '#000000', id: 'pointer-label', size: '14'},
+            {x: '180', y: '200', text: 'γ', fill: '#FF6B35', id: 'gamma-label', size: '14'},
+            {x: '200', y: '190', text: 'φ', fill: '#FF6B35', id: 'phi-label', size: '14'}
         ];
         
         labels.forEach(label => {
             const text = this.createSVGElement('text', {
                 x: label.x, y: label.y, fill: label.fill,
-                'font-size': '14', 'font-weight': 'bold',
+                'font-size': label.size || '14', 'font-weight': 'bold',
                 'font-family': 'Oxanium, monospace', id: label.id
             });
             text.textContent = label.text;
@@ -267,7 +311,7 @@ class WTADiagram {
         this.svg.appendChild(excitatoryCircle);
         
         const excitatoryText = this.createSVGElement('text', {
-            x: '370', y: '365', fill: '#DADCE0', 'font-size': '12',
+            x: '370', y: '365', fill: '#000000', 'font-size': '12',
             'font-family': 'Oxanium, monospace'
         });
         excitatoryText.textContent = 'excitatory pool';
@@ -280,68 +324,142 @@ class WTADiagram {
         this.svg.appendChild(inhibitoryCircle);
         
         const inhibitoryText = this.createSVGElement('text', {
-            x: '500', y: '365', fill: '#87CEEB', 'font-size': '12',
+            x: '500', y: '365', fill: '#000000', 'font-size': '12',
             'font-family': 'Oxanium, monospace'
         });
         inhibitoryText.textContent = 'inhibitory pool';
         this.svg.appendChild(inhibitoryText);
     }
 
+    createFlowPaths() {
+        // Define flow paths for clearer data animation
+        this.flowPaths = [
+            // Input from TOP of diagram to State WTA Pool
+            { path: [{x: 150, y: 30}, {x: 150, y: 100}], id: 'flow-input-s1', color: '#4CAF50' },
+            { path: [{x: 250, y: 30}, {x: 250, y: 100}], id: 'flow-input-s2', color: '#2196F3' },
+            
+            // State WTA to Pointer WTA (cross connections)
+            { path: [{x: 150, y: 170}, {x: 150, y: 270}], id: 'flow-s1-p12', color: '#FF6B35' },
+            { path: [{x: 250, y: 170}, {x: 250, y: 270}], id: 'flow-s2-p21', color: '#FF6B35' },
+            { path: [{x: 150, y: 170}, {x: 250, y: 220}, {x: 250, y: 270}], id: 'flow-s1-p21', color: '#FF9800' },
+            { path: [{x: 250, y: 170}, {x: 150, y: 220}, {x: 150, y: 270}], id: 'flow-s2-p12', color: '#FF9800' },
+            
+            // To inhibitory pools
+            { path: [{x: 350, y: 100}, {x: 470, y: 100}], id: 'flow-inhibit1', color: '#87CEEB' },
+            { path: [{x: 350, y: 130}, {x: 470, y: 130}], id: 'flow-inhibit2', color: '#87CEEB' },
+            { path: [{x: 350, y: 270}, {x: 470, y: 270}], id: 'flow-inhibit3', color: '#87CEEB' }
+        ];
+    }
+
+    initializeDataParticles() {
+        this.dataParticles = [];
+        
+        // Create particles for each flow path
+        this.flowPaths.forEach((flowPath, pathIndex) => {
+            const particle = this.createSVGElement('circle', {
+                r: '4',
+                fill: flowPath.color,
+                opacity: '0.9',
+                id: `particle-${pathIndex}`,
+                filter: 'url(#glow)'
+            });
+            
+            this.svg.appendChild(particle);
+            
+            this.dataParticles.push({
+                element: particle,
+                pathIndex: pathIndex,
+                progress: pathIndex * 0.15, // Stagger particles
+                speed: 0.008 // Slow speed
+            });
+        });
+    }
+
     updateAnimation() {
-        // Create flowing animation effect
+        // Update existing node animations
         const flowPhase = Math.sin(this.animationPhase);
         const glowIntensity = 0.5 + 0.5 * Math.sin(this.animationPhase * 1.2);
         
-        // Animate nodes with subtle pulsing
-        const nodeIds = [
-            `input-node-${this.containerId}`, `wta-circuit-${this.containerId}`, 
-            `b1-${this.containerId}`, `b2-${this.containerId}`, 
-            `a1-${this.containerId}`, `a2-${this.containerId}`, 
-            `w-${this.containerId}`, `output-${this.containerId}`
-        ];
-        
+        // Animate data particles along flow paths
+        this.dataParticles.forEach(particle => {
+            const path = this.flowPaths[particle.pathIndex];
+            if (!path || path.path.length < 2) return;
+            
+            // Update particle progress (slower)
+            particle.progress += particle.speed;
+            if (particle.progress > 1) {
+                particle.progress = 0;
+            }
+            
+            // Calculate position along path
+            const segmentIndex = Math.floor(particle.progress * (path.path.length - 1));
+            const segmentProgress = (particle.progress * (path.path.length - 1)) % 1;
+            
+            const startPoint = path.path[segmentIndex];
+            const endPoint = path.path[Math.min(segmentIndex + 1, path.path.length - 1)];
+            
+            const x = startPoint.x + (endPoint.x - startPoint.x) * segmentProgress;
+            const y = startPoint.y + (endPoint.y - startPoint.y) * segmentProgress;
+            
+            particle.element.setAttribute('cx', x);
+            particle.element.setAttribute('cy', y);
+            
+            // Gentler pulsing effect
+            const pulseScale = 1 + 0.2 * Math.sin(this.animationPhase * 1.5 + particle.pathIndex);
+            particle.element.setAttribute('r', 4 * pulseScale);
+            
+            // Smoother fade effect based on position
+            const fadeOpacity = 0.6 + 0.4 * Math.sin(particle.progress * Math.PI);
+            particle.element.setAttribute('opacity', fadeOpacity);
+        });
+
+        // Slower connection line animations
+        const connectionIds = ['conn1', 'conn2', 'conn3', 'conn4', 'hconn1', 'hconn2', 'hconn3'];
+        connectionIds.forEach((id, index) => {
+            const element = document.getElementById(id);
+            if (element) {
+                const flowOpacity = 0.4 + 0.3 * Math.sin(this.animationPhase * 1.2 + index * 0.5);
+                const strokeWidth = 2 + 0.5 * Math.sin(this.animationPhase * 1 + index * 0.3);
+                element.setAttribute('opacity', flowOpacity);
+                element.setAttribute('stroke-width', strokeWidth);
+            }
+        });
+
+        // Animate nodes with slower, activity-based pulsing
+        const nodeIds = ['s1-1', 's1-2', 's2-1', 's2-2', 'p12', 'p21'];
         nodeIds.forEach((id, index) => {
             const element = document.getElementById(id);
             if (element) {
-                const pulseScale = 1 + Math.sin(this.animationPhase + index * 0.3) * 0.05;
-                const cx = element.getAttribute('cx') || (parseFloat(element.getAttribute('x') || 0) + parseFloat(element.getAttribute('width') || 0) / 2);
-                const cy = element.getAttribute('cy') || (parseFloat(element.getAttribute('y') || 0) + parseFloat(element.getAttribute('height') || 0) / 2);
+                const activityPhase = this.animationPhase * 0.8 + index * 0.6;
+                const pulseScale = 1 + 0.08 * Math.sin(activityPhase);
+                const cx = element.getAttribute('cx');
+                const cy = element.getAttribute('cy');
+                
                 element.style.transform = `scale(${pulseScale})`;
                 element.style.transformOrigin = `${cx}px ${cy}px`;
                 
-                // Add glow effect occasionally
-                if (glowIntensity > 0.8) {
-                    element.setAttribute('filter', `url(#glow-${this.containerId})`);
+                // Gentler glow effect during high activity
+                const glowStrength = 0.5 + 0.5 * Math.sin(activityPhase);
+                if (glowStrength > 0.8) {
+                    element.setAttribute('filter', 'url(#glow)');
                 } else {
-                    element.setAttribute('filter', `url(#nodeShadow-${this.containerId})`);
+                    element.removeAttribute('filter');
                 }
             }
         });
 
-        // Animate neural nodes
-        for (let i = 0; i < 4; i++) {
-            const element = document.getElementById(`neural-${i}-${this.containerId}`);
-            if (element) {
-                const pulseScale = 1 + Math.sin(this.animationPhase * 1.5 + i * 0.5) * 0.08;
-                element.style.transform = `scale(${pulseScale})`;
-                element.style.transformOrigin = `center`;
-            }
-        }
-
-        // Animate edges with opacity flow
-        const edgeIds = [
-            `input-wta-${this.containerId}`, `wta-b1-${this.containerId}`, `wta-b2-${this.containerId}`, 
-            `b1-a1-${this.containerId}`, `b2-a2-${this.containerId}`, 
-            `a1-w-${this.containerId}`, `a2-w-${this.containerId}`, 
-            `w-n11-${this.containerId}`, `w-n20-${this.containerId}`, `w-n21-${this.containerId}`, `w-n22-${this.containerId}`,
-            `n11-out-${this.containerId}`, `n20-out-${this.containerId}`, `n21-out-${this.containerId}`, `n22-out-${this.containerId}`
-        ];
-        
-        edgeIds.forEach((id, index) => {
+        // Animate inhibitory nodes slower
+        const inhibitoryIds = ['inhib-1', 'inhib-2', 'pointer-inhib'];
+        inhibitoryIds.forEach((id, index) => {
             const element = document.getElementById(id);
             if (element) {
-                const flowOpacity = 0.6 + 0.4 * Math.sin(this.animationPhase * 2 + index * 0.2);
-                element.setAttribute('opacity', flowOpacity.toString());
+                const inhibPhase = this.animationPhase * 1.2 + index * 0.8;
+                const pulseScale = 1 + 0.05 * Math.sin(inhibPhase);
+                const cx = element.getAttribute('cx');
+                const cy = element.getAttribute('cy');
+                
+                element.style.transform = `scale(${pulseScale})`;
+                element.style.transformOrigin = `${cx}px ${cy}px`;
             }
         });
     }
@@ -349,8 +467,8 @@ class WTADiagram {
     startAnimation() {
         const animate = () => {
             if (this.isPlaying) {
-                this.animationPhase += 0.1;
-                this.pulseIntensity += 0.15;
+                this.animationPhase += 0.05; // Much slower overall animation
+                this.pulseIntensity += 0.08;
                 
                 if (this.animationPhase > Math.PI * 4) {
                     this.animationPhase = 0;

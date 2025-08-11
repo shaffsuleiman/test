@@ -43,7 +43,7 @@ class NeuronGraph {
         container.innerHTML = `
             <div class="neuron-graph-container" style="
                 width: 100%;
-                background-color: #090E14;
+                background-color: #ffffff;
                 padding: 15px;
                 border-radius: 8px;
                 margin: 0 auto;
@@ -63,20 +63,19 @@ class NeuronGraph {
                 ">
                     <div class="legend-item" style="display: flex; align-items: center; gap: 8px;">
                         <div style="width: 16px; height: 3px; background-color: #FF6B35; border-radius: 2px;"></div>
-                        <span style="color: #DADCE0; font-family: 'Oxanium', monospace; font-size: 12px; font-weight: 500;">PV</span>
+                        <span style="color: #000000; font-family: 'Oxanium', monospace; font-size: 12px; font-weight: 500;">PV</span>
                     </div>
-                    <div class="legend-item" style="display: flex; align-items: center; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
                         <div style="width: 16px; height: 3px; background-color: #0F7BCE; border-radius: 2px;"></div>
-                        <span style="color: #DADCE0; font-family: 'Oxanium', monospace; font-size: 12px; font-weight: 500;">SST</span>
+                        <span style="color: #000000; font-family: 'Oxanium', monospace; font-size: 12px; font-weight: 500;">SST</span>
                     </div>
-                    <div class="legend-item" style="display: flex; align-items: center; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
                         <div style="width: 16px; height: 3px; background-color: #10B981; border-radius: 2px;"></div>
-                        <span style="color: #DADCE0; font-family: 'Oxanium', monospace; font-size: 12px; font-weight: 500;">VIP</span>
+                        <span style="color: #000000; font-family: 'Oxanium', monospace; font-size: 12px; font-weight: 500;">VIP</span>
                     </div>
-                    <div class="legend-item" style="display: flex; align-items: center; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
                         <div style="width: 16px; height: 3px; background-color: #8B5CF6; border-radius: 2px;"></div>
-                        <span style="color: #DADCE0; font-family: 'Oxanium', monospace; font-size: 12px; font-weight: 500;">LAMP5</span>
-                    </div>
+                        <span style="color: #000000; font-family: 'Oxanium', monospace; font-size: 12px; font-weight: 500;">LAMP5</span>
                 </div>
             </div>
         `;
@@ -113,7 +112,7 @@ class NeuronGraph {
         const height = this.canvas.offsetHeight || parseInt(this.canvas.style.height) || 400;
         const padding = 60;
         
-        this.ctx.strokeStyle = '#2A3441';
+        this.ctx.strokeStyle = '#000000';
         this.ctx.lineWidth = 1;
         
         // Vertical grid lines
@@ -140,7 +139,7 @@ class NeuronGraph {
         const height = this.canvas.offsetHeight;
         const padding = 60;
         
-        this.ctx.strokeStyle = '#DADCE0';
+        this.ctx.strokeStyle = '#000000';
         this.ctx.lineWidth = 2;
         
         // X axis
@@ -156,7 +155,7 @@ class NeuronGraph {
         this.ctx.stroke();
         
         // Labels
-        this.ctx.fillStyle = '#DADCE0';
+        this.ctx.fillStyle = '#000000';
         this.ctx.font = '12px Oxanium, monospace';
         this.ctx.textAlign = 'center';
         
@@ -175,7 +174,7 @@ class NeuronGraph {
         }
         
         // Axis titles
-        this.ctx.fillStyle = '#DADCE0';
+        this.ctx.fillStyle = '#000000';
         this.ctx.font = 'bold 14px Oxanium, monospace';
         this.ctx.textAlign = 'center';
         this.ctx.fillText('Cortical Layer', width / 2, height - 10);

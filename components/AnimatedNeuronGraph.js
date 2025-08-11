@@ -50,38 +50,38 @@ const AnimatedNeuronGraph = () => {
     <div className="neuron-graph-container" style={{ 
       width: '100%', 
       height: '500px', 
-      backgroundColor: '#090E14',
+      backgroundColor: '#ffffff',
       padding: '20px',
       borderRadius: '8px'
     }}>
       <div style={{ height: '460px' }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={currentData} margin={{ top: 20, right: 30, left: 40, bottom: 60 }}>
-            <CartesianGrid strokeDasharray="3,3" stroke="#2A3441" />
+            <CartesianGrid strokeDasharray="3,3" stroke="#000000" />
             <XAxis 
               dataKey="neuronId"
-              axisLine={{ stroke: '#DADCE0', strokeWidth: 2 }}
-              tickLine={{ stroke: '#DADCE0', strokeWidth: 1 }}
-              tick={{ fontSize: 12, fontWeight: 'bold', fill: '#DADCE0' }}
+              axisLine={{ stroke: '#000000', strokeWidth: 2 }}
+              tickLine={{ stroke: '#000000', strokeWidth: 1 }}
+              tick={{ fontSize: 12, fontWeight: 'bold', fill: '#000000' }}
               label={{ 
                 value: 'Cortical Layer', 
                 position: 'insideBottom', 
                 offset: -10, 
-                style: { fontSize: '14px', fontWeight: 'bold', fill: '#DADCE0' } 
+                style: { fontSize: '14px', fontWeight: 'bold', fill: '#000000' } 
               }}
               domain={[1, 7]}
               type="number"
               ticks={[1, 2, 3, 4, 5, 6, 7]}
             />
             <YAxis 
-              axisLine={{ stroke: '#DADCE0', strokeWidth: 2 }}
-              tickLine={{ stroke: '#DADCE0', strokeWidth: 1 }}
-              tick={{ fontSize: 12, fontWeight: 'bold', fill: '#DADCE0' }}
+              axisLine={{ stroke: '#000000', strokeWidth: 2 }}
+              tickLine={{ stroke: '#000000', strokeWidth: 1 }}
+              tick={{ fontSize: 12, fontWeight: 'bold', fill: '#000000' }}
               label={{ 
                 value: 'Inhibitory Strength (Hz)', 
                 angle: -90, 
                 position: 'insideLeft', 
-                style: { fontSize: '14px', fontWeight: 'bold', fill: '#DADCE0' } 
+                style: { fontSize: '14px', fontWeight: 'bold', fill: '#000000' } 
               }}
               domain={[0, 65]}
               ticks={[0, 10, 20, 30, 40, 50, 60]}
@@ -134,10 +134,10 @@ const AnimatedNeuronGraph = () => {
             <Legend 
               wrapperStyle={{ 
                 paddingTop: '15px',
-                color: '#DADCE0'
+                color: '#000000'
               }}
               iconType="line"
-              formatter={(value) => <span style={{ color: '#DADCE0', fontSize: '12px' }}>{value}</span>}
+              formatter={(value) => <span style={{ color: '#000000', fontSize: '12px' }}>{value}</span>}
             />
           </LineChart>
         </ResponsiveContainer>

@@ -143,7 +143,7 @@ class NeuromorphicHardware {
                     width: 900px;
                     height: 600px;
                     position: relative;
-                    background-color: #0F1923;
+                    background-color: #ffffff;
                     padding: 40px;
                 }
 

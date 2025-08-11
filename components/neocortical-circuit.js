@@ -21,7 +21,7 @@ class NeocorticalCircuit {
         container.innerHTML = `
             <div class="neocortical-circuit-container" style="
                 width: 100%;
-                background-color: #0F1923;
+                background-color: #ffffff;
                 padding: 15px;
                 border-radius: 8px;
                 margin: 0 auto;
@@ -103,7 +103,7 @@ class NeocorticalCircuit {
         
         const arrowPolygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
         arrowPolygon.setAttribute('points', '0 0, 10 3.5, 0 7');
-        arrowPolygon.setAttribute('fill', '#DADCE0');
+        arrowPolygon.setAttribute('fill', '#000000');
         marker.appendChild(arrowPolygon);
         defs.appendChild(marker);
         
@@ -125,14 +125,14 @@ class NeocorticalCircuit {
         const leftBoundary = this.createSVGElement('rect', {
             x: '50', y: '150', width: '300', height: '350',
             rx: '10', ry: '10', fill: 'none',
-            stroke: '#2A3441', 'stroke-width': '3'
+            stroke: '#000000', 'stroke-width': '3'
         });
         this.svg.appendChild(leftBoundary);
         
         const rightBoundary = this.createSVGElement('rect', {
             x: '450', y: '150', width: '300', height: '350',
             rx: '10', ry: '10', fill: 'none',
-            stroke: '#2A3441', 'stroke-width': '3'
+            stroke: '#000000', 'stroke-width': '3'
         });
         this.svg.appendChild(rightBoundary);
         
@@ -140,13 +140,13 @@ class NeocorticalCircuit {
         const contextualInput = this.createSVGElement('rect', {
             x: '80', y: '50', width: '120', height: '40',
             rx: '5', ry: '5', fill: 'none',
-            stroke: '#DADCE0', 'stroke-width': '2'
+            stroke: '#000000', 'stroke-width': '2'
         });
         this.svg.appendChild(contextualInput);
         
         const contextualText = this.createSVGElement('text', {
             x: '140', y: '75', 'text-anchor': 'middle',
-            fill: '#DADCE0', 'font-size': '14', 'font-weight': 'bold',
+            fill: '#000000', 'font-size': '14', 'font-weight': 'bold',
             'font-family': 'Oxanium, monospace'
         });
         contextualText.textContent = 'Top-down';
@@ -155,14 +155,14 @@ class NeocorticalCircuit {
         // Contextual input arrow
         const contextualArrow = this.createSVGElement('line', {
             x1: '200', y1: '70', x2: '350', y2: '70',
-            stroke: '#DADCE0', 'stroke-width': '2',
+            stroke: '#000000', 'stroke-width': '2',
             'marker-end': 'url(#arrowhead2)', id: 'contextual-arrow'
         });
         this.svg.appendChild(contextualArrow);
         
         const contextualLabel = this.createSVGElement('text', {
             x: '275', y: '60', 'text-anchor': 'middle',
-            fill: '#DADCE0', 'font-size': '12',
+            fill: '#000000', 'font-size': '12',
             'font-family': 'Oxanium, monospace'
         });
         contextualLabel.textContent = 'Contextual input';
@@ -237,7 +237,7 @@ class NeocorticalCircuit {
         // Main neurons
         const neuron1 = this.createSVGElement('circle', {
             cx: '200', cy: '350', r: '25',
-            fill: '#DADCE0', stroke: '#666', 'stroke-width': '2',
+            fill: '#ffffff', stroke: '#000000', 'stroke-width': '2',
             id: 'neuron-1'
         });
         this.svg.appendChild(neuron1);
@@ -252,7 +252,7 @@ class NeocorticalCircuit {
         
         const neuron10 = this.createSVGElement('circle', {
             cx: '600', cy: '350', r: '25',
-            fill: '#DADCE0', stroke: '#666', 'stroke-width': '2',
+            fill: '#ffffff', stroke: '#000000', 'stroke-width': '2',
             id: 'neuron-10'
         });
         this.svg.appendChild(neuron10);
@@ -265,16 +265,16 @@ class NeocorticalCircuit {
         neuron10Text.textContent = '10';
         this.svg.appendChild(neuron10Text);
         
-        // PV neurons
+        // PV neurons (positioned to avoid overlap)
         const pv1 = this.createSVGElement('circle', {
-            cx: '120', cy: '420', r: '18',
+            cx: '100', cy: '440', r: '18',
             fill: '#87CEEB', stroke: '#4682B4', 'stroke-width': '2',
             id: 'pv-1'
         });
         this.svg.appendChild(pv1);
         
         const pv1Text = this.createSVGElement('text', {
-            x: '120', y: '427', 'text-anchor': 'middle',
+            x: '100', y: '447', 'text-anchor': 'middle',
             fill: '#000080', 'font-size': '12', 'font-weight': 'bold',
             'font-family': 'Oxanium, monospace'
         });
@@ -282,14 +282,14 @@ class NeocorticalCircuit {
         this.svg.appendChild(pv1Text);
         
         const pv10 = this.createSVGElement('circle', {
-            cx: '680', cy: '420', r: '18',
+            cx: '700', cy: '440', r: '18',
             fill: '#87CEEB', stroke: '#4682B4', 'stroke-width': '2',
             id: 'pv-10'
         });
         this.svg.appendChild(pv10);
         
         const pv10Text = this.createSVGElement('text', {
-            x: '680', y: '427', 'text-anchor': 'middle',
+            x: '700', y: '447', 'text-anchor': 'middle',
             fill: '#000080', 'font-size': '12', 'font-weight': 'bold',
             'font-family': 'Oxanium, monospace'
         });
@@ -321,12 +321,12 @@ class NeocorticalCircuit {
             {id: 'vip-lamp5-1', x1: '385', y1: '185', x2: '385', y2: '145', stroke: '#9370DB', width: '2'},
             {id: 'vip-lamp5-2', x1: '415', y1: '185', x2: '415', y2: '145', stroke: '#9370DB', width: '2'},
             {id: 'recurrent-conn', x1: '175', y1: '340', x2: '575', y2: '340', stroke: '#8B4513', width: '3'},
-            {id: 'pv1-conn', x1: '140', y1: '410', x2: '180', y2: '370', stroke: '#4682B4', width: '2'},
-            {id: 'pv10-conn', x1: '660', y1: '410', x2: '620', y2: '370', stroke: '#4682B4', width: '2'},
+            {id: 'pv1-conn', x1: '100', y1: '440', x2: '180', y2: '370', stroke: '#4682B4', width: '2'},
+            {id: 'pv10-conn', x1: '700', y1: '440', x2: '620', y2: '370', stroke: '#4682B4', width: '2'},
             {id: 'sst1-conn', x1: '380', y1: '530', x2: '220', y2: '370', stroke: '#DC143C', width: '3'},
             {id: 'sst10-conn', x1: '420', y1: '530', x2: '580', y2: '370', stroke: '#DC143C', width: '3'},
-            {id: 'input1-conn', x1: '120', y1: '480', x2: '180', y2: '370', stroke: '#DADCE0', width: '2'},
-            {id: 'input10-conn', x1: '680', y1: '480', x2: '620', y2: '370', stroke: '#DADCE0', width: '2'}
+            {id: 'input1-conn', x1: '140', y1: '560', x2: '180', y2: '370', stroke: '#000000', width: '2'},
+            {id: 'input10-conn', x1: '680', y1: '560', x2: '620', y2: '370', stroke: '#000000', width: '2'}
         ];
         
         connections.forEach(conn => {
@@ -365,7 +365,7 @@ class NeocorticalCircuit {
         
         labels.forEach(label => {
             const text = this.createSVGElement('text', {
-                x: label.x, y: label.y, fill: '#DADCE0',
+                x: label.x, y: label.y, fill: '#000000',
                 'font-size': '12', 'font-weight': 'bold',
                 'font-family': 'Oxanium, monospace', id: label.id
             });
@@ -377,30 +377,30 @@ class NeocorticalCircuit {
     createInputs() {
         // Input boxes
         const input1Box = this.createSVGElement('rect', {
-            x: '80', y: '480', width: '80', height: '30',
+            x: '100', y: '560', width: '80', height: '30',
             rx: '5', ry: '5', fill: 'none',
-            stroke: '#DADCE0', 'stroke-width': '2'
+            stroke: '#000000', 'stroke-width': '2'
         });
         this.svg.appendChild(input1Box);
         
         const input1Text = this.createSVGElement('text', {
-            x: '120', y: '500', 'text-anchor': 'middle',
-            fill: '#DADCE0', 'font-size': '12', 'font-weight': 'bold',
+            x: '140', y: '580', 'text-anchor': 'middle',
+            fill: '#000000', 'font-size': '12', 'font-weight': 'bold',
             'font-family': 'Oxanium, monospace'
         });
         input1Text.textContent = 'Input 1';
         this.svg.appendChild(input1Text);
         
         const input10Box = this.createSVGElement('rect', {
-            x: '640', y: '480', width: '80', height: '30',
+            x: '640', y: '560', width: '80', height: '30',
             rx: '5', ry: '5', fill: 'none',
-            stroke: '#DADCE0', 'stroke-width': '2'
+            stroke: '#000000', 'stroke-width': '2'
         });
         this.svg.appendChild(input10Box);
         
         const input10Text = this.createSVGElement('text', {
-            x: '680', y: '500', 'text-anchor': 'middle',
-            fill: '#DADCE0', 'font-size': '12', 'font-weight': 'bold',
+            x: '680', y: '580', 'text-anchor': 'middle',
+            fill: '#000000', 'font-size': '12', 'font-weight': 'bold',
             'font-family': 'Oxanium, monospace'
         });
         input10Text.textContent = 'Input 10';

@@ -8,19 +8,112 @@
   <link rel="stylesheet" href="animations.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script src="components/neuron-graph.js"></script>
   <script src="components/wta-diagram.js"></script>
   <script src="components/neocortical-circuit.js"></script>
   <script src="components/neuromorphic-hardware.js"></script>
   <script src="components/wta-directed-graph.js"></script>
+
+  <style>
+    /* Font family setup - matching drug discovery and main page */
+    body {
+      font-family: 'Inter Tight', 'Roboto', sans-serif !important;
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Inter Tight', 'Roboto', sans-serif !important;
+      font-weight: 600;
+    }
+    
+    .hero-content h2 {
+      font-family: 'Inter Tight', 'Roboto', sans-serif !important;
+      font-weight: 700;
+      font-size: 3.0em;
+      line-height: 1.3;
+    }
+    
+    .hero-content p {
+      font-family: 'Inter Tight', 'Roboto', sans-serif !important;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    
+    .subheading {
+      font-family: 'Inter Tight', 'Roboto', sans-serif !important;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    
+    /* White theme for all components */
+    body, h1, h2, h3, h4, h5, h6, p, a, li, span, div, .nav-menu a, .brand p, .brand h1, 
+    .author-card h3, .author-card p, .small-text, .intro-text, .subheading, .caption, 
+    .toggle-label, th, td, .demo-header h2, .demo-header p {
+      color: black !important;
+    }
+    
+    /* Button styling - ensure all buttons have white text */
+    .btn, .demo-btn, .demo-btn.primary {
+      color: white !important;
+      font-family: 'Inter Tight', 'Roboto', sans-serif !important;
+      font-weight: 500;
+    }
+    
+    /* Consistent section spacing */
+    .section, .section.light, .section.centered-figure-section, .demo-section, .contact-section {
+      padding: 60px 0 !important;
+    }
+    
+    /* Reduce padding for short content sections */
+    .section.compact {
+      padding: 30px 0 !important;
+    }
+    
+    /* Background colors for components */
+    .section, .section.light, .demo-section, .centered-figure-section {
+      background: white !important;
+    }
+    
+    /* Table styling for white theme */
+    table, thead tr, tbody tr {
+      background-color: rgba(0, 0, 0, 0.05) !important;
+    }
+    
+    thead tr {
+      background-color: rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    th {
+      color: black !important;
+      font-weight: bold;
+      font-family: 'Inter Tight', 'Roboto', sans-serif !important;
+    }
+    
+    td {
+      color: black !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+      font-family: 'Inter Tight', 'Roboto', sans-serif !important;
+    }
+    
+    /* Author card borders for white theme */
+    .author-card div {
+      border: 3px solid rgba(0, 0, 0, 0.2) !important;
+    }
+    
+    /* Ensure all interactive components use black text */
+    #neuron-graph, #neuromorphic-hardware-mapping, #night-vision-wta, #neocortical-circuit-inline {
+      color: black !important;
+    }
+  </style>
 </head>
 
 <body>
 
   <header class="navbar">
     <div class="brand">
-      <img src="assets/logo-tp.png" alt="Logo" />
+      <img src="assets/tibbblogo.png" alt="Logo" />
       <div style="line-height:1.0; margin-bottom:0;">
         <h1 style="margin:0;">Soft WTA</h1>
         <p style="margin:0;">Tibbling Technologies</p>
@@ -32,7 +125,7 @@
       <span class="hamburger-line"></span>
     </button>
     <nav class="nav-menu">
-      <a href="#hero" class="active">Home</a>
+      <a href="#hero" >Home</a>
       <a href="#demo">Demo</a>
       <a href="https://www.biorxiv.org/content/10.1101/2024.10.06.616839v2.full.pdf" target="_blank">Paper</a>
       <a href="#contact">Contact</a>
@@ -48,36 +141,67 @@
     <video src="assets/2.mp4" class="hero-bg" alt="sWTA overview" autoplay loop muted></video>
   </section>
 
-  <section class="section" style="padding-bottom: 30px;" id="brain-ai-revolution">
+  <!-- Video Section -->
+  <section class="section" style="background: white;" id="intro-video">
+    <div style="max-width: 900px; margin: 0 auto; text-align: center;">
+      <h2 style="color: black; margin-bottom: 20px;">Watch: Soft WTA in Action</h2>
+      <p style="color: black; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        See how our brain-inspired AI technology works and learn about the science behind Soft Winner-Take-All networks.
+      </p>
+      
+      <div style="position: relative; width: 100%; max-width: 800px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);">
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+          <iframe 
+            src="https://www.youtube.com/embed/PDKhUknuQDg" 
+            title="Soft WTA Technology Overview"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      
+      <div style="margin-top: 20px;">
+        <a href="https://www.youtube.com/watch?v=PDKhUknuQDg" target="_blank" style="color: #666; text-decoration: none; font-size: 14px; display: inline-flex; align-items: center; gap: 8px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          Watch on YouTube
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="brain-ai-revolution">
     <div style="max-width: 900px; margin: 0 auto;">
-      <h2 style="text-align: center;">The Brain-AI Revolution</h2>
+      <h2 style="text-align: center; color: black;">The Brain-AI Revolution</h2>
       <p style="text-align: center; max-width: 800px; margin: 0 auto 20px auto;">
         For decades, AI has evolved separately from neuroscience. While deep learning took inspiration from the brain, it diverged from actual biological mechanisms. At Tibbling, we're bringing these worlds back together with our Soft Winner-Take-All technology that implements real cortical circuits in AI systems.
       </p>
       <div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 40px; gap: 30px;">
         <div class="author-card" style="text-align: center; flex: 1; min-width: 250px; max-width: 300px; margin: 0 10px; opacity: 0; transform: translateY(20px);">
-          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px auto; border: 3px solid rgba(255, 255, 255, 0.2);">
+          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px auto; border: 3px solid rgba(0, 0, 0, 0.2);">
             <img src="assets/asim.jpeg" alt="Dr. Sarah Chen" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <h3 style="margin: 10px 0 5px 0; color: white;">Dr. Asim Iqbal</h3>
-          <p class="small-text" style="margin: 5px 0; color: #DADCE0;">Lead Neuroscientist</p>
-          <p class="small-text" style="margin: 0; color: #999;">Tibbling Technologies, USA</p>
+          <h3 style="margin: 10px 0 5px 0; color: black;">Dr. Asim Iqbal</h3>
+          <p class="small-text" style="margin: 5px 0; color: black;">Lead Neuroscientist</p>
+          <p class="small-text" style="margin: 0; color: black;">Tibbling Technologies, USA</p>
         </div>
         <div class="author-card" style="text-align: center; flex: 1; min-width: 250px; max-width: 300px; margin: 0 10px; opacity: 0; transform: translateY(20px);">
-          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px auto; border: 3px solid rgba(255, 255, 255, 0.2);">
+          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px auto; border: 3px solid rgba(0, 0, 0, 0.2);">
             <img src="assets/author2.jpg" alt="Dr. Michael Rodriguez" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <h3 style="margin: 10px 0 5px 0; color: white;">Hassan Mahmood</h3>
-          <p class="small-text" style="margin: 5px 0; color: #DADCE0;">AI Research Director</p>
-          <p class="small-text" style="margin: 0; color: #999;">Tibbling Technologies, USA</p>
+          <h3 style="margin: 10px 0 5px 0; color: black;">Hassan Mahmood</h3>
+          <p class="small-text" style="margin: 5px 0; color: black;">AI Research Director</p>
+          <p class="small-text" style="margin: 0; color: black;">Tibbling Technologies, USA</p>
         </div>
         <div class="author-card" style="text-align: center; flex: 1; min-width: 250px; max-width: 300px; margin: 0 10px; opacity: 0; transform: translateY(20px);">
-          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px auto; border: 3px solid rgba(255, 255, 255, 0.2);">
+          <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; margin: 0 auto 15px auto; border: 3px solid rgba(0, 0, 0, 0.2);">
             <img src="assets/author3.jpg" alt="Dr. Emma Thompson" style="width: 100%; height: 100%; object-fit: cover;">
           </div>
-          <h3 style="margin: 10px 0 5px 0; color: white;">Suraj Honnuraiah</h3>
-          <p class="small-text" style="margin: 5px 0; color: #DADCE0;">Lead contact</p>
-          <p class="small-text" style="margin: 0; color: #999;">Google DeepMind</p>
+          <h3 style="margin: 10px 0 5px 0; color: black;">Suraj Honnuraiah</h3>
+          <p class="small-text" style="margin: 5px 0; color: black;">Lead contact</p>
+          <p class="small-text" style="margin: 0; color: black;">Google DeepMind</p>
         </div>
       </div>
     </div>
@@ -102,7 +226,7 @@
 
   <section class="section light">
     <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; max-width: 900px; margin: 0 auto; align-items: center;">
-      <h2 style="flex: 1; min-width: 350px; margin-bottom: 20px;">Biology Meets Silicon</h2>
+      <h2 style="flex: 1; min-width: 350px; margin-bottom: 20px; color: black;">Biology Meets Silicon</h2>
       <div style="flex: 1; min-width: 300px; margin-bottom: 20px; margin-top: 80px;">
         <p class="subheading" style="margin-top: 0;">Your Brain, Rebuilt in Code and Circuits. Mapping neural complexity to algorithmic elegance.</p>
       </div>
@@ -112,13 +236,13 @@
       <!-- <p class="figure-description">
         The complete NeuroAI framework: from biological neurons to neuromorphic chips to Vision Transformers.
       </p> -->
-      <img src="assets/intro.png" alt="NeuroAI Framework Overview" class="centered-main-figure pulse-animation">
+      <img src="assets/fig1.png" alt="NeuroAI Framework Overview" class="centered-main-figure pulse-animation">
       
     </div>
   </section>
 
   <section class="section light">
-    <h2>Your Brain Inspires Clarity in Machines</h2>
+    <h2 style="color: black;">Your Brain Inspires Clarity in Machines</h2>
     <p class="subheading">Amplifies strongest signals, filters noise - exactly like your visual cortex. Translating biological inhibition into computational enhancement.</p>
     
     <!-- Interactive Components Row -->
@@ -137,92 +261,27 @@
     </section>
 
   <section class="section centered-figure-section">
+    <!-- Heading and subheading above the figures -->
+    <div style="text-align: center; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
+      <h2 style="color: black; margin-bottom: 20px; padding-bottom: 2px;">Zero-Shot Learning</h2>
+      <p class="subheading">
+        Fundamental breakthrough in machine learning and adaptation. Vision Transformers got 30% smarter on unseen data. Brain-inspired circuits enable models to generalize without retraining.
+      </p>
+    </div>
+    
     <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 0 auto; align-items: center; max-width: 1200px;">
-      <!-- Figures on left side with toggle -->
+      <!-- Architecture Image on right side -->
       <div style="flex: 2; min-width: 400px;">
-        <div class="toggle-container" style="display: flex; justify-content: center; margin-bottom: 15px;">
-          <div class="toggle-switch">
-            <span class="toggle-label" style="color: white;">Architecture</span>
-            <label class="switch">
-              <input type="checkbox" id="image-toggle">
-              <span class="slider round"></span>
-            </label>
-            <span class="toggle-label" style="color: white;">Results</span>
-          </div>
-        </div>
-        
-        <div class="toggle-image-container" style="position: relative; width: 100%; min-height: 400px;">
-          <div id="architecture-image" class="toggle-image active" style="position: absolute; width: 100%; transition: opacity 0.5s ease;">
-            <img src="assets/4cd.png" alt="sWTA Vision Transformer Architecture" style="width: 100%; max-height: 400px; object-fit: contain;" class="pulse-animation">
-          </div>
-          <div id="results-image" class="toggle-image" style="position: absolute; width: 100%; transition: opacity 0.5s ease;">
-            <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: nowrap; min-height: 400px;">
-              <!-- Results Table on LEFT -->
-              <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
-                <table style="width: 100%; margin: 0; background-color: rgba(255, 255, 255, 0.05); border-radius: 8px; overflow: hidden;">
-                  <thead>
-                    <tr style="background-color: rgba(255, 255, 255, 0.1);">
-                      <th style="padding: 12px; text-align: left; color: white; font-weight: bold; font-size: 16px;">Model</th>
-                      <th style="padding: 12px; text-align: left; color: white; font-weight: bold; font-size: 16px;">Dataset</th>
-                      <th style="padding: 12px; text-align: left; color: white; font-weight: bold; font-size: 16px;">Accuracy Gain</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">ViT</td>
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">MNIST-M</td>
-                      <td style="padding: 10px; color: #4CAF50; font-weight: bold; font-size: 15px;">+30%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">EfficientNet</td>
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">SVHN</td>
-                      <td style="padding: 10px; color: #4CAF50; font-weight: bold; font-size: 15px;">+22%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">ResNet</td>
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">MNIST-M</td>
-                      <td style="padding: 10px; color: #4CAF50; font-weight: bold; font-size: 15px;">+19%</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">CapsuleNet</td>
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">SVHN</td>
-                      <td style="padding: 10px; color: #4CAF50; font-weight: bold; font-size: 15px;">+25%</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">MobileNet</td>
-                      <td style="padding: 10px; color: #DADCE0; font-size: 15px;">MNIST-M</td>
-                      <td style="padding: 10px; color: #4CAF50; font-weight: bold; font-size: 15px;">+17%</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <p style="text-align: center; margin-top: 15px; color: #DADCE0; font-size: 13px; font-style: italic;">
-                  Accuracy improvements across architectures using sWTA layer
-                </p>
-              </div>
-              
-              <!-- Results Image on RIGHT -->
-              <div style="flex: 1; min-width: 300px; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/output.png" alt="sWTA Vision Transformer Results" style="width: 100%; max-height: 400px; object-fit: contain;" class="float-animation">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Heading and subheadings on right side -->
-      <div style="flex: 1; min-width: 250px; max-width: 350px;">
-        <h2>Zero-Shot Learning Breakthrough</h2>
-        <p class="subheading">
-          Fundamental breakthrough in machine learning and adaptation. Vision Transformers got 30% smarter on unseen data. Brain-inspired circuits enable models to generalize without retraining.
-        </p>
+        <img src="assets/4cd.1.png" alt="sWTA Vision Transformer Architecture" style="width: 100%; max-height: 500px; object-fit: contain;" class="pulse-animation">
       </div>
     </div>
   </section>
 
   <section class="section light">
-    <h2>Any Image , One Solution</h2>
+    <h2 style="color: black;">Any Image , One Solution</h2>
     <p class="subheading">AI that understands images across styles, formats, and distortions. One unified approach that works with diverse visual representations.</p>
     
+    <!-- MNIST-type grid -->
     <div class="side-by-side-showcase">
       <div class="image-comparison-grid" id="auto-transition-grid">
         <div class="image-comparison-item">
@@ -255,19 +314,49 @@
         </div>
       </div>
     </div>
+
+    <!-- Zero-shot generalization section -->
+    <div style="margin-top: 60px;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+        <div style="display: flex; align-items: flex-start; gap: 60px;"> 
+          <!-- 3 images on right -->
+          <div style="flex: 2; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px; max-width: 600px;">
+              <div class="image-overlay-container zero-shot-image" style="width: 100%; aspect-ratio: 1.5/1; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+                <img src="assets/b5.png" alt="Original Natural Scene" class="base-image" style="object-fit: cover;">
+                <img src="assets/a5.png" alt="Processed Natural Scene" class="overlay-image" style="object-fit: cover;">
+              </div>
+            </div>
+            <div style="flex: 1; min-width: 300px; max-width: 600px;">
+              <div class="image-overlay-container zero-shot-image" style="width: 100%; aspect-ratio: 1.5/1; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+                <img src="assets/b6.png" alt="Original Underwater Scene" class="base-image" style="object-fit: cover;">
+                <img src="assets/a6.png" alt="Processed Underwater Scene" class="overlay-image" style="object-fit: cover;">
+              </div>
+            </div>
+            <div style="flex: 1; min-width: 300px; max-width: 600px;">
+              <div class="image-overlay-container zero-shot-image" style="width: 100%; aspect-ratio: 1.5/1; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+                <img src="assets/b7.png" alt="Original Coral Scene" class="base-image" style="object-fit: cover;">
+                <img src="assets/a7.png" alt="Processed Coral Scene" class="overlay-image" style="object-fit: cover;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
   </section>
 
-  <section class="section">
+  <section class="section light ">
+    <div style="margin-top:150px ;"></div>
     <div style="display: flex; flex-wrap: wrap; gap: 30px; margin: 0 auto; align-items: center; max-width: 1400px;">
       <!-- Figure on left side -->
       <div style="flex: 3; min-width: 600px; display: flex; flex-direction: column; align-items: center;">
-        <img src="assets/supp7.png" alt="Domain alignment" style="width: 100%; object-fit: contain; animation: subtle-glow 6s infinite alternate ease-in-out;" class="float-animation">
+        <img id="domain-alignment-image" src="assets/supp7.png" alt="Domain alignment" style="width: 100%; object-fit: contain; transition: opacity 0.8s ease-in-out;" class="float-animation">
       </div>
       
       <!-- Heading on right side -->
       <div style="flex: 1; min-width: 250px;">
-        <h2>Brain-Like Feature Learning</h2>
+        <h2 style="color: black;">Brain-Like Feature Learning</h2>
         <p class="caption" style="text-align: left; margin-top: 15px; margin-left: 15px;">
           Feature alignment improves with sWTA, leading to better domain generalization. Our approach brings together features that traditional models keep separate.
         </p>
@@ -275,24 +364,24 @@
     </div>
   </section>
 
-  <section class="section light">
-    <h2>Unsupervised Solutions for Complex Problems</h2>
+  <!-- <section class="section light compact">
+    <h2 style="color: black;">Unsupervised Solutions for Complex Problems</h2>
     <p>
         One simple brain layer. Smarter models, everywhere. The detailed accuracy improvements are shown in the Zero-Shot Learning section above.
     </p>
     
     <div class="centered-figure-container">
-      <img src="assets/ai_improvement_clean.gif" alt="WTA Performance Visualization" class="centered-main-figure float-animation" style="max-width: 600px; margin: 20px auto;">
+      <img src="assets/ai_improvement_clean.png" alt="WTA Performance Visualization" class="centered-main-figure float-animation" style="max-width: 500px; ">
     </div>
-  </section>
+  </section> -->
 
   <section class="section centered-figure-section">
-    <h2>Your Brain's Super-Team, Now in AI</h2>
+    <h2 style="color: black;">Your Brain's Super-Team, Now in AI</h2>
     <p class="subheading">Like a perfectly coordinated team, different brain cells work together. We've taught AI to do the same.</p>
     
     <div class="side-by-side-showcase neuron-layout">
       <div class="content-half">
-        <p class="intro-text">
+        <p class="intro-text" style="color: black;">
           Your brain has different cells that work together. Some spot key details, some add context, others manage information flow, and some keep things balanced.We've used the same teamwork in AI to make it smarter and more human-like.
           <!-- <br><br>
           We've recreated this natural teamwork in AI, making it smarter and more human-like. -->
@@ -306,27 +395,47 @@
     </div>
   </section>
 
-  <section class="section light">
-    <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; max-width: 900px; margin: 0 auto; align-items: flex-start;">
-      <h2 style="flex: 1; min-width: 350px; margin-bottom: 10px;">System That Thinks Like You</h2>
-      <div style="flex: 1; min-width: 300px; margin-bottom: 10px;">
-        <p class="subheading" style="margin-top: 30px;">Chip that remembers, filters, runs on zero power just like your brain. Cortical circuits mapped to TrueNorth's digital neurons for energy efficient computation.</p>
+  <section class="section light" style="padding: 80px 0;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <div style="display: flex; align-items: center; gap: 60px;">
+        <!-- Title and text on left side -->
+        <div style="flex: 1; max-width: 400px;">
+          <h2 style="color: black; font-size: 2.5rem; font-weight: 600; margin-bottom: 20px; line-height: 1.2;">System That Thinks Like You</h2>
+          <p style="color: #666; font-size: 1.1rem; line-height: 1.6; margin: 0;">Chip that remembers, filters, runs on zero power just like your brain. Cortical circuits mapped to TrueNorth's digital neurons for energy efficient computation.</p>
+        </div>
+        
+        <!-- Figure on right side -->
+        <div style="flex: 1;">
+          <div style="max-height: 500px; overflow: hidden;">
+            <div id="neuromorphic-hardware-mapping" style="width: 100%; max-width: 700px; margin: 0 auto;"></div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="centered-figure-container" style="margin-top: 0; max-height: 450px; overflow: hidden;">
-      <div id="neuromorphic-hardware-mapping" style="width: 100%; max-width: 800px; margin: 0 auto; transform: scale(0.85); transform-origin: top center;"></div>
+  <section class="section" style="padding: 80px 0; background: #fafafa;">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 40px;">
+      <div style="display: flex; align-items: center; gap: 80px;">
+        <!-- Figure on left side -->
+        <div style="flex: 1.2; display: flex; justify-content: center;">
+          <div style="position: relative; padding: 30px; background: white; border-radius: 16px;">
+            <div id="night-vision-wta" style="width: 100%; max-width: 550px;" class="animated-figure"></div>
+          </div>
+        </div>
+        
+        <!-- Title and text on right side -->
+        <div style="flex: 1; max-width: 450px;">
+          <h2 style="color: black; font-size: 2.5rem; font-weight: 600; margin-bottom: 24px; line-height: 1.2;">Night Vision Superpowers</h2>
+          <p style="color: #555; font-size: 1.15rem; line-height: 1.7; margin-bottom: 49px;">Just like your eyes adjust to the dark, these brain-inspired AI circuits turn up contrast in low-light scenes—helping machines 'see' where others go blind.</p>
+          <!-- <p style="color: #777; font-size: 1rem; line-height: 1.6; margin: 0; font-style: italic;">Real-time enhancement without pre-training on specific lighting conditions.</p> -->
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <h2>Night Vision Superpowers</h2>
-    <div id="night-vision-wta" style="width: 100%; max-width: 600px; margin: 20px auto;" class="animated-figure"></div>
-    <p class="caption">Just like your eyes adjust to the dark, these brain-inspired AI circuits turn up contrast in low-light scenes—helping machines 'see' where others go blind.</p>
-  </section>
-
   <section class="section light">
-  <h2>Bridging Neuroscience and AI</h2>
+  <h2 style="color: black;">Bridging Neuroscience and AI</h2>
     <p>
     First computationally efficient system that truly mimics brain circuits - unlocking working memory, decision-making, and biological learning.    Computer vision to medical imaging to autonomous vehicles - we're making AI <strong>fundamentally more brain-like</strong>.
   </p>
@@ -337,21 +446,21 @@
 </section>
 
 
-  <section class="demo-section" id="demo">
+  <!-- <section class="demo-section" id="demo">
     <div class="demo-container">
       <div class="demo-header">
-        <h2>Try the sWTA Demo</h2>
+        <h2 style="color: black;">Try the sWTA Demo</h2>
         <p>Experience soft winner-take-all processing on your images</p>
       </div>
       
       <div class="demo-actions">
         <a class="demo-btn primary" href="https://huggingface.co/spaces/TibbtechUser/Winner_Take_All" target="_blank">
-          <span class="btn-icon">🚀</span>
+          <span class="btn-icon" style="color: white;">🚀</span>
           Launch Interactive Demo
         </a>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="contact-section" id="contact">
   <h2 class="contact-heading">
@@ -431,7 +540,7 @@
           container.addEventListener('mouseleave', () => { isHovering = false; });
         });
         
-        // Auto transition all images together every 3 seconds if not being hovered
+        // Auto transition all images together every 1.5 seconds if not being hovered
         setInterval(() => {
           if (!isHovering) {
             isShowingOverlay = !isShowingOverlay;
@@ -445,7 +554,68 @@
               }
             });
           }
-        }, 3000);
+        }, 1500);
+      }
+      
+      // Auto-transition for domain alignment images
+      const domainAlignmentImage = document.getElementById('domain-alignment-image');
+      if (domainAlignmentImage) {
+        let isHoveringDomain = false;
+        let isShowingSupp71 = false;
+        
+        // Track mouse enter/leave to pause auto-transition during hover
+        domainAlignmentImage.addEventListener('mouseenter', () => { isHoveringDomain = true; });
+        domainAlignmentImage.addEventListener('mouseleave', () => { isHoveringDomain = false; });
+        
+        // Auto transition every 4 seconds if not being hovered
+        setInterval(() => {
+          if (!isHoveringDomain) {
+            isShowingSupp71 = !isShowingSupp71;
+            
+            // Fade out, change source, fade in
+            domainAlignmentImage.style.opacity = '0.3';
+            
+            setTimeout(() => {
+              if (isShowingSupp71) {
+                domainAlignmentImage.src = 'assets/supp7.1.png';
+                domainAlignmentImage.alt = 'Domain alignment enhanced';
+              } else {
+                domainAlignmentImage.src = 'assets/supp7.png';
+                domainAlignmentImage.alt = 'Domain alignment';
+              }
+              domainAlignmentImage.style.opacity = '1';
+            }, 400); // Half of transition time
+          }
+        }, 4000);
+      }
+      
+      // Auto-transition for zero-shot generalization images
+      const zeroShotContainers = document.querySelectorAll('.zero-shot-image');
+      if (zeroShotContainers.length > 0) {
+        let isHoveringZeroShot = false;
+        let isShowingZeroShotOverlay = false;
+        
+        // Track mouse enter/leave for all zero-shot containers
+        zeroShotContainers.forEach(container => {
+          container.addEventListener('mouseenter', () => { isHoveringZeroShot = true; });
+          container.addEventListener('mouseleave', () => { isHoveringZeroShot = false; });
+        });
+        
+        // Auto transition all zero-shot images together every 1.5 seconds if not being hovered
+        setInterval(() => {
+          if (!isHoveringZeroShot) {
+            isShowingZeroShotOverlay = !isShowingZeroShotOverlay;
+            
+            // Toggle active-transition class on all zero-shot containers at once
+            zeroShotContainers.forEach(container => {
+              if (isShowingZeroShotOverlay) {
+                container.classList.add('active-transition');
+              } else {
+                container.classList.remove('active-transition');
+              }
+            });
+          }
+        }, 1500);
       }
       
       // Handle toggle switch for Zero-Shot Learning section
